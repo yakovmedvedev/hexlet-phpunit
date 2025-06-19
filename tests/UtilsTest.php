@@ -16,7 +16,7 @@ class UtilsTest extends TestCase
     {
         // Сначала идет ожидаемое значение (expected)
         // И только потом актуальное (actual)
-        $this->assertEquals('', reverseString(''));
+        $this->assertEquals('', reverseString(''), 'comment');
         $this->assertEquals('olleh', reverseString('hello'));
     }
 }
