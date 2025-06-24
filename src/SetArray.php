@@ -3,7 +3,7 @@
 namespace Set\Array;
 
 $coll = [];
-$path = ['a', 'b', 'c'];
+$path = ['a', 'b', 'c', 'd'];
 $value = 5;
 function set(array &$coll, array $path, $value) {
     $ref =& $coll;
