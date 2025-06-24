@@ -14,7 +14,9 @@ if (file_exists($autoloadPath1)) {
 
 use PHPUnit\Framework\TestCase;
 
-class SetFunctionTest extends TestCase
+use function Set\Array\set;
+
+class SetArrayTest extends TestCase
 {
     // Test setting a value at an existing nested path
     public function testSetExistingPath()
