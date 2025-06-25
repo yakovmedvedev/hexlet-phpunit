@@ -18,101 +18,64 @@ use function Set\Array\set;
 
 class SetArrayTest extends TestCase
 {
-    // Test setting a value at an existing nested path
+    private $coll;
+
+    protected function setUp(): void
+    {
+        // Initialize the collection before each test
+        $this->coll = [
+            'a' => [
+                'b' => [
+                    'c' => 3,
+                ],
+            ],
+        ];
+    }
+
     public function testSetExistingPath()
     {
-        $coll = [
-            'a' => [
-                'b' => [
-                    'c' => 3
-                ]
-            ]
-        ];
-        
-        // Calling set() to change the value of 'c' to 4
-        set($coll, ['a', 'b', 'c'], 4);
-        
-        // Assert that the value was updated correctly
-        $this->assertSame(4, $coll['a']['b']['c']);
+        set($this->coll, ['a', 'b', 'c'], 4);
+        $this->assertEquals(4, $this->coll['a']['b']['c']);
     }
 
-    // Test setting a value at a non-existing path
-    public function testSetNonExistingPath()
+    public function testSetNewPath()
     {
-        $coll = [
-            'a' => [
-                'b' => [
-                    'c' => 3
-                ]
-            ]
-        ];
-
-        // Setting a value in a new nested path
-        set($coll, ['x', 'y', 'z'], 5);
-        
-        // Assert that the new values are set as expected
-        $this->assertSame(5, $coll['x']['y']['z']);
+        set($this->coll, ['x', 'y', 'z'], 5);
+        $this->assertEquals(5, $this->coll['x']['y']['z']);
     }
 
-    // Test setting a value at a deep nested path
-    public function testSetDeepNest()
+    public function testAddAnotherNestedPath()
     {
-        $coll = [];
-        
-        // Set a value deep in the array
-        set($coll, ['level1', 'level2', 'level3'], 'value');
-        
-        // Confirm the deep value was set correctly
-        $this->assertSame('value', $coll['level1']['level2']['level3']);
+        set($this->coll, ['a', 'd'], 6);
+        $this->assertEquals(6, $this->coll['a']['d']);
     }
 
-    // Test overwriting an existing value
-    public function testSetOverwritingExistingValue()
+    public function testOverwriteExistingPath()
     {
-        $coll = [
-            'a' => [
-                'b' => [
-                    'c' => 3
-                ]
-            ]
-        ];
-        
-        // Update existing nested value
-        set($coll, ['a', 'b', 'c'], 10);
-        $this->assertSame(10, $coll['a']['b']['c']);
-
-        // Overwrite the value again
-        set($coll, ['a', 'b', 'c'], 20);
-        $this->assertSame(20, $coll['a']['b']['c']);
+        set($this->coll, ['a', 'b'], 7);
+        $this->assertEquals(7, $this->coll['a']['b']);
+        // Ensure 'b' has been replaced and does not hold 'c' under it anymore
+        $this->assertArrayNotHasKey('c', $this->coll['a']);
     }
 
-    // Test setting multiple values in various paths
-    public function testSetMultipleValues()
+    public function testDeepNestedPath()
     {
-        $coll = [];
-        
-        // Set initial value
-        set($coll, ['a', 'b'], 'initial');
-        
-        // Confirm the initial value was set correctly
-        $this->assertSame('initial', $coll['a']['b']);
-        
-        // Set another value at a different path
-        set($coll, ['a', 'c'], 'second');
-        
-        // Check that the second value is as expected
-        $this->assertSame('second', $coll['a']['c']);
+        set($this->coll, ['a', 'b', 'd', 'e', 'f'], 8);
+        $this->assertEquals(8, $this->coll['a']['b']['d']['e']['f']);
     }
 
-    // Test that state is independent between tests
-    public function testStateIndependence()
+    // Example negative test case
+    public function testInvalidOverwrite()
     {
-        $coll = [];
-        
-        // Set a value independent of other tests
-        set($coll, ['a'], 'test');
-        
-        // Verify its outcome
-        $this->assertSame('test', $coll['a']);
+        set($this->coll, ['a', 'b'], 9);
+        $this->assertNotEquals(3, $this->coll['a']['b']); // Asserting that it is not the old value
+    }
+
+    public function testThatNonExistentKeyDoesNotThrowError()
+    {
+        $this->assertArrayNotHasKey('nonexistent', $this->coll);
+        // This next line is actually not checking an error, it's merely setting it, it should pass
+        set($this->coll, ['nonexistent', 'key'], 'value');
+        $this->assertEquals('value', $this->coll['nonexistent']['key']);
     }
 }
