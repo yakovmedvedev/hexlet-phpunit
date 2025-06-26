@@ -11,4 +11,4 @@ function makeArray($string): array
     $array = explode(', ', $string);
     return $array;
 }
-print_r(makeArray($string));
+// print_r(makeArray($string));

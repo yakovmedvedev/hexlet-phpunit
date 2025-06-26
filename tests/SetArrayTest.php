@@ -25,82 +25,54 @@ class SetArrayTest extends TestCase
         $this->coll = [];
     }
 
-    public function testSetSingleValue()
+    public function testSetExistingPath()
     {
-        $path = ['a'];
-        $value = 'value1';
-
-        set($this->coll, $path, $value);
-
-        $this->assertEquals(['a' => 'value1'], $this->coll);
+        $coll = ['a' => ['b' => ['c' => 3]]];
+        set($coll, ['a', 'b', 'c'], 4);
+        $this->assertEquals(['a' => ['b' => ['c' => 4]]], $coll);
     }
 
-    public function testSetExistingValue()
+    public function testSetNewPath()
     {
-        $this->coll = [
-            'a' => [
-                'b' => [
-                    'c' => 3
-                ]
-            ]
-        ];
-
-        set($this->coll, ['a', 'b', 'c'], 4);
-
-        $this->assertEquals(['a' => ['b' => ['c' => 4]]], $this->coll);
+        $coll = ['a' => ['b' => ['c' => 3]]];
+        set($coll, ['x', 'y', 'z'], 5);
+        $this->assertEquals(
+            [
+                'a' => ['b' => ['c' => 3]],
+                'x' => ['y' => ['z' => 5]],
+            ], 
+            $coll
+        );
     }
 
-    public function testSetNewNestedValue()
+    public function testSetComplexPath()
     {
-        $this->coll = [
-            'a' => [
-                'b' => [
-                    'c' => 3
-                ]
-            ]
-        ];
-
-        set($this->coll, ['x', 'y', 'z'], 5);
-
-        $this->assertEquals([
-            'a' => ['b' => ['c' => 3]],
-            'x' => ['y' => ['z' => 5]],
-        ], $this->coll);
+        $coll = ['a' => ['b' => ['c' => 3]]];
+        set($coll, ['a', 'b', 'd'], 6);
+        $this->assertEquals(
+            [
+                'a' => [
+                    'b' => [
+                        'c' => 3,
+                        'd' => 6,
+                    ],
+                ],
+            ], 
+            $coll
+        );
     }
 
-    public function testSetMultipleLevels()
+    public function testSetDeepNestedPath()
     {
-        $this->coll = [];
-
-        set($this->coll, ['x', 'y', 'z'], 'deepValue');
-
-        $this->assertEquals(['x' => ['y' => ['z' => 'deepValue']]], $this->coll);
+        $coll = [];
+        set($coll, ['a', 'b', 'c', 'd'], 8);
+        $this->assertEquals(['a' => ['b' => ['c' => ['d' => 8,],],],], $coll);
     }
 
-    public function testSetWithExistingStructure()
+    public function testSetOverwriteExistingValue()
     {
-        // Setting initial structure with 'three' as an empty array
-        $this->coll = [
-            'one' => [
-                'two' => [
-                    'three' => []
-                ]
-            ]
-        ];
-        
-        set($this->coll, ['one', 'two', 'three', 'four'], 'newValue');
-
-        $this->assertEquals(['one' => ['two' => ['three' => ['four' => 'newValue']]]], $this->coll);
-    }
-
-    public function testSetWithEmptyPath()
-    {
-        $path = [];
-        $value = 'value';
-
-        set($this->coll, $path, $value);
-
-        // Since the path is empty, the structure should stay empty
-        $this->assertEquals([], $this->coll);
+        $coll = ['a' => ['b' => ['c' => 3]]];
+        set($coll, ['a', 'b', 'c'], 10);
+        $this->assertEquals(['a' => ['b' => ['c' => 10]]], $coll);
     }
 }

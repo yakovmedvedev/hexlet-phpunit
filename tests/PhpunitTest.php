@@ -18,19 +18,20 @@ use function Test\Php\Unit\makeArray;
 
 class PhpunitTest extends TestCase
 {
-    private $string;
+    private $array;
 
     protected function setUp(): void
     {
-        $this->string = '';
+        $this->array = [];
     }
-    public function testStringFormat(): void
+    public function testArray(): void
     {
         // $string = "ewewewewe";
-
+        $array = [];
+        $string = 'a';
         makeArray($string);
 
-        $this->assertContains('that', $array);
+        $this->assertTrue(array_key_exists([0], $this->array));
     }
 
 }

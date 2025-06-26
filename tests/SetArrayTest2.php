@@ -43,6 +43,18 @@ class SetArrayTest2 extends TestCase
         $this->assertSame(4, $coll['a']['b']['c']);
     
     }
+        public function testSetNewPath()
+    {
+        $coll = ['a' => ['b' => ['c' => 3]]];
+        set($coll, ['x', 'y', 'z'], 5);
+        $this->assertEquals(
+            [
+                'a' => ['b' => ['c' => 3]],
+                'x' => ['y' => ['z' => 5]],
+            ], 
+            $coll
+        );
+    }
 
     // Test setting a value at a non-existing path
     public function testSetNonExistingPath()
@@ -61,7 +73,22 @@ class SetArrayTest2 extends TestCase
         // Assert that the new values are set as expected
         $this->assertSame(5, $coll['x']['y']['z']);
     }
-
+        public function testSetComplexPath()
+    {
+        $coll = ['a' => ['b' => ['c' => 3]]];
+        set($coll, ['a', 'b', 'd'], 6);
+        $this->assertEquals(
+            [
+                'a' => [
+                    'b' => [
+                        'c' => 3,
+                        'd' => 6,
+                    ],  
+                ],
+            ], 
+            $coll
+        );
+    }
     // Test setting multiple values in various paths
     public function testSetMultipleValues()
     {
@@ -110,5 +137,17 @@ public function testSetNonExistentValueShouldFail()
         set($coll, ['a'], 'value1');
 
         $this->assertEquals(['a' => 'value1'], $coll);
+    }
+        public function testSetDeepNestedPath()
+    {
+        $coll = [];
+        set($coll, ['a', 'b', 'c', 'd'], 8);
+        $this->assertEquals(['a' => ['b' => ['c' => ['d' => 8,],],],], $coll);
+    }
+        public function testSetOverwriteExistingValue()
+    {
+        $coll = ['a' => ['b' => ['c' => 3]]];
+        set($coll, ['a', 'b', 'c'], 10);
+        $this->assertEquals(['a' => ['b' => ['c' => 10]]], $coll);
     }
 }
