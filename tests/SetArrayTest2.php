@@ -101,6 +101,14 @@ public function testSetNonExistentValueShouldFail()
     // If you don't want 'x' to exist at all:
     // $this->assertArrayNotHasKey('x', $coll['a']); // This will fail as 'x' is being set.
 }
+   public function testSetSingleValue()
+    {
+        $coll = [];
+        // $path = ['a'];
+        // $value = 'value1';
 
+        set($coll, ['a'], 'value1');
 
+        $this->assertEquals(['a' => 'value1'], $coll);
+    }
 }

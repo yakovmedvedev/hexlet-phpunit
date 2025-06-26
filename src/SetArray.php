@@ -8,20 +8,22 @@ namespace Set\Array;
 
 
 function set(array &$coll, array $path, $value) {
-    $current =& $coll;  // Reference to the current position in the collection
+    $current =& $coll;
+    $lastIndex = count($path) - 1;
 
     foreach ($path as $key) {
-        // If the key does not exist, create an empty array for that key
-        if (!isset($current[$key])) {
+        
+        if (!in_array($key, $current)) {
             $current[$key] = [];
         }
+        if ($key === $path[$lastIndex]) {
+            $current[$key] = $value;
+        }
 
-        // Move the reference to the next level down the array
         $current =& $current[$key];
     }
 
-    // Set the value at the last level of the array
-    $current = $value;
+    return $coll;
 }
 // Testing the function
 $coll = [

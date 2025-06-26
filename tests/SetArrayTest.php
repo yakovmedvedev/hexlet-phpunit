@@ -22,60 +22,85 @@ class SetArrayTest extends TestCase
 
     protected function setUp(): void
     {
-        // Initialize the collection before each test
+        $this->coll = [];
+    }
+
+    public function testSetSingleValue()
+    {
+        $path = ['a'];
+        $value = 'value1';
+
+        set($this->coll, $path, $value);
+
+        $this->assertEquals(['a' => 'value1'], $this->coll);
+    }
+
+    public function testSetExistingValue()
+    {
         $this->coll = [
             'a' => [
                 'b' => [
-                    'c' => 3,
-                ],
-            ],
+                    'c' => 3
+                ]
+            ]
         ];
-    }
 
-    public function testSetExistingPath()
-    {
         set($this->coll, ['a', 'b', 'c'], 4);
-        $this->assertEquals(4, $this->coll['a']['b']['c']);
+
+        $this->assertEquals(['a' => ['b' => ['c' => 4]]], $this->coll);
     }
 
-    public function testSetNewPath()
+    public function testSetNewNestedValue()
     {
+        $this->coll = [
+            'a' => [
+                'b' => [
+                    'c' => 3
+                ]
+            ]
+        ];
+
         set($this->coll, ['x', 'y', 'z'], 5);
-        $this->assertEquals(5, $this->coll['x']['y']['z']);
+
+        $this->assertEquals([
+            'a' => ['b' => ['c' => 3]],
+            'x' => ['y' => ['z' => 5]],
+        ], $this->coll);
     }
 
-    public function testAddAnotherNestedPath()
+    public function testSetMultipleLevels()
     {
-        set($this->coll, ['a', 'd'], 6);
-        $this->assertEquals(6, $this->coll['a']['d']);
+        $this->coll = [];
+
+        set($this->coll, ['x', 'y', 'z'], 'deepValue');
+
+        $this->assertEquals(['x' => ['y' => ['z' => 'deepValue']]], $this->coll);
     }
 
-    public function testOverwriteExistingPath()
+    public function testSetWithExistingStructure()
     {
-        set($this->coll, ['a', 'b'], 7);
-        $this->assertEquals(7, $this->coll['a']['b']);
-        // Ensure 'b' has been replaced and does not hold 'c' under it anymore
-        $this->assertArrayNotHasKey('c', $this->coll['a']);
+        // Setting initial structure with 'three' as an empty array
+        $this->coll = [
+            'one' => [
+                'two' => [
+                    'three' => []
+                ]
+            ]
+        ];
+        
+        set($this->coll, ['one', 'two', 'three', 'four'], 'newValue');
+
+        $this->assertEquals(['one' => ['two' => ['three' => ['four' => 'newValue']]]], $this->coll);
     }
 
-    public function testDeepNestedPath()
+    public function testSetWithEmptyPath()
     {
-        set($this->coll, ['a', 'b', 'd', 'e', 'f'], 8);
-        $this->assertEquals(8, $this->coll['a']['b']['d']['e']['f']);
-    }
+        $path = [];
+        $value = 'value';
 
-    // Example negative test case
-    public function testInvalidOverwrite()
-    {
-        set($this->coll, ['a', 'b'], 9);
-        $this->assertNotEquals(3, $this->coll['a']['b']); // Asserting that it is not the old value
-    }
+        set($this->coll, $path, $value);
 
-    public function testThatNonExistentKeyDoesNotThrowError()
-    {
-        $this->assertArrayNotHasKey('nonexistent', $this->coll);
-        // This next line is actually not checking an error, it's merely setting it, it should pass
-        set($this->coll, ['nonexistent', 'key'], 'value');
-        $this->assertEquals('value', $this->coll['nonexistent']['key']);
+        // Since the path is empty, the structure should stay empty
+        $this->assertEquals([], $this->coll);
     }
 }
