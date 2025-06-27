@@ -19,16 +19,10 @@ use function Set\Array\set;
 
 class SetArrayTest2 extends TestCase
 {
-    // Так определяется переменная на уровне класса
-    // Ее называют свойством
-    // Здесь private закрывает переменную от внешнего доступа
     private $coll;
 
-    // Метод ничего не возвращает
     public function setUp(): void
     {
-        // Так к переменной происходит доступ внутри класса
-        // В этом случае — запись данных
         $this->coll = [];
     }
     
@@ -36,10 +30,8 @@ class SetArrayTest2 extends TestCase
     {
         $coll = [];
         
-        // Calling set() to change the value of 'c' to 4
         set($coll, ['a', 'b', 'c'], 4);
         
-        // Assert that the value was updated correctly
         $this->assertSame(4, $coll['a']['b']['c']);
     
     }
@@ -55,8 +47,6 @@ class SetArrayTest2 extends TestCase
             $coll
         );
     }
-
-    // Test setting a value at a non-existing path
     public function testSetNonExistingPath()
     {
         $coll = [
@@ -67,10 +57,9 @@ class SetArrayTest2 extends TestCase
             ]
         ];
 
-        // Setting a value in a new nested path
         set($coll, ['x', 'y', 'z'], 5);
         
-        // Assert that the new values are set as expected
+
         $this->assertSame(5, $coll['x']['y']['z']);
     }
         public function testSetComplexPath()

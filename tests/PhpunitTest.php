@@ -13,6 +13,7 @@ if (file_exists($autoloadPath1)) {
 }
 
 use PHPUnit\Framework\TestCase;
+use Hexlet\Phpunit\Functional;
 
 use function Test\Php\Unit\makeArray;
 
@@ -31,7 +32,7 @@ class PhpunitTest extends TestCase
         $string = 'a';
         makeArray($string);
 
-        $this->assertTrue(array_key_exists([0], $this->array));
+        $this->assertTrue(in_array('a', $array));
     }
 
 }

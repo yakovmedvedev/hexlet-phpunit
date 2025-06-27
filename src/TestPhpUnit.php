@@ -3,12 +3,13 @@
 namespace Test\Php\Unit;
 
 
-
+$string = "that's a string!";
 
 function makeArray($string): array
 {
-    $string = "that's a string!";
-    $array = explode(', ', $string);
+    
+    $array = explode(' ', $string);
+
     return $array;
 }
 // print_r(makeArray($string));
