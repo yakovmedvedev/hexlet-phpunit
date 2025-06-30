@@ -20,24 +20,48 @@ use function Gen\Pass\generatePassword;
 
 class GenPassTest extends TestCase
 {
-    private $number;
+    private $length;
+    private $symbols;
 
     protected function setUp(): void
     {
-        $this->number = 0;
+        $this->length = 12;
+        $this->symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
     }
         public static function passProvider(): array
     {
         return [
             ['jqBr(D)0WSna'],
             ['G(Sn|.Q.oo7q'],
-            ['kC;pqX2,a:{{+<[k*|=pvycU'],
+            ['St7m2>Fb(RDG'],
+            ['*.qR0PU(Zjf['],
+            ['J)d*K1IgLYAH']
         ];
     }
     #[DataProvider('passProvider')]
-    public function testGeneratePassword($number, $expected)
+    public function testPasswordLength()
     {
-        $result = generatePassword($number);
-        $this->assertEquals($expected, generatePassword($number));
+        $length = 12;
+        $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
+        $expected = mb_strlen(generatePassword($length, $symbols));
+        $this->assertEquals($expected, $length);
+    }
+    // #[DataProvider('passProvider')]
+    //     public function testPasswordDigits()
+    // {
+    //     $length = 12;
+    //     $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
+    //     $digits = '1234567890';
+    //     $expected = str_contains($digits, generatePassword($length, $symbols));
+    //     $this->assertTrue($expected, $digits);
+    // }
+    #[DataProvider('passProvider')]
+        public function testPasswordSpecialSymbols()
+    {
+        $length = 12;
+        $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
+        $specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
+        $expected = strstr($specialChars, generatePassword($length, $symbols));
+        $this->assertTrue($expected, $specialChars);
     }
 }

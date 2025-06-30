@@ -2,17 +2,18 @@
 
 namespace Gen\Pass;
 
-
+$symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
 $length = 12;
 $includeUppercase = true;
 $includeDigits = true;
 $includeSpecial = true;
+$digits = '1234567890';
+$specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
 
-
-function generatePassword($length, $includeUppercase, $includeDigits, $includeSpecial)
+function generatePassword($length, $symbols)
 {
-    $pass = [];
-    $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
+    
+    $pass = [];    
     for ($i = 0; $i < $length; $i++) {
         $symbol = rand(0, mb_strlen($symbols) - 1);
 //        var_dump($symbol);
@@ -22,7 +23,7 @@ function generatePassword($length, $includeUppercase, $includeDigits, $includeSp
     return implode($pass);
 // $password = generatePassword(8, includeSpecial: true);
 
-    $specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
+    
     $containsSpecial = false;
 
     for ($i = 0; $i < $length; $i++) {
@@ -36,5 +37,5 @@ function generatePassword($length, $includeUppercase, $includeDigits, $includeSp
     print_r($pass);
     return $pass;
 }
-generatePassword($length, $includeUppercase, $includeDigits, $includeSpecial);
+generatePassword($length, $symbols);
 //print_r($containsSpecial); // => true
