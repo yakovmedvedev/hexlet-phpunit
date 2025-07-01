@@ -31,20 +31,18 @@ class GenPassTest extends TestCase
         public static function passProvider(): array
     {
         return [
-            ['jqBr(D)0WSna'],
-            ['G(Sn|.Q.oo7q'],
-            ['St7m2>Fb(RDG'],
-            ['*.qR0PU(Zjf['],
-            ['J)d*K1IgLYAH']
+            ['#qBr(D)0WSna'],
+            ['G#Sn|.Q.oo7q'],
+            ['St1m2aFbwRDG'],
+            ['*.q#0PU(Zjf['],
+            ['J)d*#1IgLYAH']
         ];
     }
     #[DataProvider('passProvider')]
     public function testPasswordLength()
     {
-        $length = 12;
-        $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
-        $expected = mb_strlen(generatePassword($length, $symbols));
-        $this->assertEquals($expected, $length);
+        $expected = mb_strlen(generatePassword($this->length, $this->symbols));
+        $this->assertEquals($expected, $this->length);
     }
     // #[DataProvider('passProvider')]
     //     public function testPasswordDigits()
@@ -58,10 +56,18 @@ class GenPassTest extends TestCase
     #[DataProvider('passProvider')]
         public function testPasswordSpecialSymbols()
     {
-        $length = 12;
-        $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
+        // $length = 12;
+        // $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
+        $pass = generatePassword($this->length, $this->symbols);
         $specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
-        $expected = strstr($specialChars, generatePassword($length, $symbols));
-        $this->assertTrue($expected, $specialChars);
+        $containsSpecial = false;
+        for ($i = 0; $i < mb_strlen($this->length); $i++) {
+    if (str_contains($specialChars, $pass[$i])) {
+        $containsSpecial = true;
+        break;
+    }
+    }
+        // $expected = true;
+        $this->assertTrue($containsSpecial);
     }
 }
