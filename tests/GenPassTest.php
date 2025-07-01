@@ -20,54 +20,120 @@ use function Gen\Pass\generatePassword;
 
 class GenPassTest extends TestCase
 {
-    private $length;
-    private $symbols;
+    private $password;
 
     protected function setUp(): void
     {
-        $this->length = 12;
-        $this->symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
+        // This method will run before each test
+        $this->password = null; // Initialize the password property
     }
-        public static function passProvider(): array
+    public static function passwordProvider(): array
     {
         return [
-            ['#qBr(D)0WSna'],
-            ['G#Sn|.Q.oo7q'],
-            ['St1m2aFbwRDG'],
-            ['*.q#0PU(Zjf['],
-            ['J)d*#1IgLYAH']
+            [8, false, false, false, ['uppercase' => false, 'digit' => false, 'special' => false]],
+            [5, true, false, false, ['uppercase' => true, 'digit' => false, 'special' => false]],
+            [5, true, true, false, ['uppercase' => true, 'digit' => true, 'special' => false]],
+            [5, true, true, true, ['uppercase' => true, 'digit' => true, 'special' => true]],
+            [10, false, true, true, ['uppercase' => false, 'digit' => true, 'special' => true]],
         ];
     }
-    #[DataProvider('passProvider')]
-    public function testPasswordLength()
+    // #[DataProvider('passwordProvider')]
+    public function testGeneratePasswordLowercase()
     {
-        $expected = mb_strlen(generatePassword($this->length, $this->symbols));
-        $this->assertEquals($expected, $this->length);
+        $this->password = generatePassword(8);
+        // Assert that the password has a length of 8
+        $this->assertEquals(8, strlen($this->password));
+        // Assert that it contains only lowercase letters
+        $this->assertTrue(ctype_lower($this->password));
     }
-    // #[DataProvider('passProvider')]
-    //     public function testPasswordDigits()
+
+    public function testGeneratePasswordUppercase()
+    {
+        $this->password = generatePassword(5, true);
+        $this->assertEquals(5, strlen($this->password));
+        $this->assertTrue($this->containsUppercase($this->password));
+    }
+
+    public function testGeneratePasswordWithDigits()
+    {
+        $this->password = generatePassword(5, true, true);
+        $this->assertEquals(5, strlen($this->password));
+        $this->assertTrue($this->containsUppercase($this->password));
+        $this->assertTrue($this->containsDigit($this->password));
+    }
+
+    public function testGeneratePasswordWithSpecialCharacters()
+    {
+        $this->password = generatePassword(5, true, true, true);
+        $this->assertEquals(5, strlen($this->password));
+        $this->assertTrue($this->containsUppercase($this->password));
+        $this->assertTrue($this->containsDigit($this->password));
+        $this->assertTrue($this->containsSpecial($this->password));
+    }
+
+    // Helper function to check for uppercase letters
+    private function containsUppercase($password)
+    {
+        return preg_match('/[A-Z]/', $password) === 1;
+    }
+
+    // Helper function to check for digits
+    private function containsDigit($password)
+    {
+        return preg_match('/[0-9]/', $password) === 1;
+    }
+
+    // Helper function to check for special characters
+    private function containsSpecial($password)
+    {
+        return preg_match('/[!@#$%^&*(),.?":{}|<>]/', $password) === 1;
+    }
+
+    // public function testGeneratePassword($length, $includeUppercase, $includeDigits, $includeSpecial, $expectedContains)
     // {
-    //     $length = 12;
-    //     $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
-    //     $digits = '1234567890';
-    //     $expected = str_contains($digits, generatePassword($length, $symbols));
-    //     $this->assertTrue($expected, $digits);
+    //     $this->password = generatePassword($length, $includeUppercase, $includeDigits, $includeSpecial);
+    //     $this->assertEquals($length, strlen($this->password));
+
+    //     // Check for the expected character types
+    //     $hasUppercase = false;
+    //     $hasDigit = false;
+    //     $hasSpecial = false;
+        
+    //     // Character sets for checks
+    //     $specialChars = '!@#$%^&*(),.?":{}|<>';
+
+    //     // Iterate over each character in the password and check types
+    //     for ($i = 0; $i < strlen($this->password); $i++) {
+    //         $char = $this->password[$i];
+
+    //         if (ctype_upper($char)) {
+    //             $hasUppercase = true;
+    //         }
+
+    //         if (ctype_digit($char)) {
+    //             $hasDigit = true;
+    //         }
+
+    //         if (strpos($specialChars, $char) !== false) {
+    //             $hasSpecial = true;
+    //         }
+    //     }
+
+    //     // Assertions based on flags
+    //     $this->assertEquals($expectedContains['uppercase'], $hasUppercase);
+    //     $this->assertEquals($expectedContains['digit'], $hasDigit);
+    //     $this->assertEquals($expectedContains['special'], $hasSpecial);
     // }
-    #[DataProvider('passProvider')]
-        public function testPasswordSpecialSymbols()
-    {
-        // $length = 12;
-        // $symbols = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?/';
-        $pass = generatePassword($this->length, $this->symbols);
-        $specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
-        $containsSpecial = false;
-        for ($i = 0; $i < mb_strlen($this->length); $i++) {
-    if (str_contains($specialChars, $pass[$i])) {
-        $containsSpecial = true;
-        break;
-    }
-    }
-        // $expected = true;
-        $this->assertTrue($containsSpecial);
-    }
+
+    // public function passwordProvider()
+    // {
+    //     return [
+    //         [8, false, false, false, ['uppercase' => false, 'digit' => false, 'special' => false]],
+    //         [5, true, false, false, ['uppercase' => true, 'digit' => false, 'special' => false]],
+    //         [5, true, true, false, ['uppercase' => true, 'digit' => true, 'special' => false]],
+    //         [5, true, true, true, ['uppercase' => true, 'digit' => true, 'special' => true]],
+    //         [10, false, true, true, ['uppercase' => false, 'digit' => true, 'special' => true]],
+    //     ];
+    // }
+
 }
