@@ -2,10 +2,10 @@
 
 namespace Calc\Rect;
 
-$length = 2;
-$width = 3;
+// $length = 2;
+// $width = 3;
 
-function calculateRectangleArea(int $length, int $width): int
+function calculateRectangleArea(int $length, int $width)
 {
     if ($length <= 0 || $width <= 0) {
         return null; // Invalid dimensions
