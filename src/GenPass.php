@@ -2,7 +2,8 @@
 
 namespace Gen\Pass;
 
-function generatePassword($length = 8, $includeUppercase = false, $includeDigits = false, $includeSpecial = false) {
+function generatePassword($length = 5, $includeUppercase = false, $includeDigits = true, $includeSpecial = true)
+{
     $lowercase = 'abcdefghijklmnopqrstuvwxyz';
     $uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $digits = '0123456789';
@@ -58,4 +59,3 @@ function generatePassword($length = 8, $includeUppercase = false, $includeDigits
     print_r('password: ' . $password . "\n");
     return $password;
 }
-generatePassword($length = 8, $includeUppercase = true, $includeDigits = true, $includeSpecial = true);

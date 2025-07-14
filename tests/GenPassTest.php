@@ -39,7 +39,7 @@ class GenPassTest extends TestCase
     #[DataProvider('passwordProvider')]
     public function testGeneratePasswordLowercase()
     {
-        $this->password = generatePassword(8);
+        $this->password = generatePassword(8, false, false, false);
         $this->assertEquals(8, strlen($this->password));
         $this->assertTrue(ctype_lower($this->password));
     }
