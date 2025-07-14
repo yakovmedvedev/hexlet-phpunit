@@ -13,13 +13,13 @@ function generatePassword($length = 5, $includeUppercase = false, $includeDigits
     $password = '';
 
     // Add characters to the set based on the flags
-    if ($includeUppercase) {
+    if ($includeUppercase === true) {
         $characterSet .= $uppercase;
     }
-    if ($includeDigits) {
+    if ($includeDigits === true) {
         $characterSet .= $digits;
     }
-    if ($includeSpecial) {
+    if ($includeSpecial === true) {
         $characterSet .= $special;
     }
 
