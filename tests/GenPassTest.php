@@ -37,7 +37,7 @@ class GenPassTest extends TestCase
             [10, false, true, true, ['uppercase' => false, 'digit' => true, 'special' => true]],
         ];
     }
-    // #[DataProvider('passwordProvider')]
+    #[DataProvider('passwordProvider')]
     public function testGeneratePasswordLowercase()
     {
         $this->password = generatePassword(8);
@@ -46,31 +46,38 @@ class GenPassTest extends TestCase
         // Assert that it contains only lowercase letters
         $this->assertTrue(ctype_lower($this->password));
     }
-
+    #[DataProvider('passwordProvider')]
     public function testGeneratePasswordUppercase()
     {
         $this->password = generatePassword(5, true);
         $this->assertEquals(5, strlen($this->password));
+        $this->assertTrue($this->containsLowercase($this->password));
         $this->assertTrue($this->containsUppercase($this->password));
     }
-
+    #[DataProvider('passwordProvider')]
     public function testGeneratePasswordWithDigits()
     {
         $this->password = generatePassword(5, true, true);
         $this->assertEquals(5, strlen($this->password));
+        $this->assertTrue($this->containsLowercase($this->password));
         $this->assertTrue($this->containsUppercase($this->password));
         $this->assertTrue($this->containsDigit($this->password));
     }
-
+    #[DataProvider('passwordProvider')]
     public function testGeneratePasswordWithSpecialCharacters()
     {
         $this->password = generatePassword(5, true, true, true);
         $this->assertEquals(5, strlen($this->password));
+        $this->assertTrue($this->containsLowercase($this->password));
         $this->assertTrue($this->containsUppercase($this->password));
         $this->assertTrue($this->containsDigit($this->password));
         $this->assertTrue($this->containsSpecial($this->password));
     }
 
+    private function containsLowercase($password)
+    {
+        return preg_match('/[a-z]/', $password) === 1;
+    }
     // Helper function to check for uppercase letters
     private function containsUppercase($password)
     {

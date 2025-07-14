@@ -31,6 +31,12 @@ function generatePassword($length = 8, $includeUppercase = false, $includeDigits
 
     // Ensure the password contains at least one of each selected type
 
+    // if (strpos($characterSet, $lowercase) !== false) {
+    //     $password .= $lowercase[rand(0, mb_strlen($lowercase) - 1)]; // Ensure at least one lowercase
+    // }
+    if (preg_match("/[a-z]/", $characterSet) !== false) {
+        $password .= $lowercase[rand(0, mb_strlen($lowercase) - 1)];
+    }
     if ($includeUppercase) {
         $password .= $uppercase[rand(0, mb_strlen($uppercase) - 1)];
     }
