@@ -37,14 +37,14 @@ class GenPassTest extends TestCase
         ];
     }
     #[DataProvider('passwordProvider')]
-    public function testGeneratePasswordLowercase()
+    public function testGeneratePasswordLowercase(): void
     {
         $this->password = generatePassword(8, false, false, false);
         $this->assertEquals(8, strlen($this->password));
         $this->assertTrue(ctype_lower($this->password));
     }
     #[DataProvider('passwordProvider')]
-    public function testGeneratePasswordUppercase()
+    public function testGeneratePasswordUppercase(): void
     {
         $this->password = generatePassword(5, true);
         $this->assertEquals(5, strlen($this->password));
@@ -52,7 +52,7 @@ class GenPassTest extends TestCase
         $this->assertTrue($this->containsUppercase($this->password));
     }
     #[DataProvider('passwordProvider')]
-    public function testGeneratePasswordWithDigits()
+    public function testGeneratePasswordWithDigits(): void
     {
         $this->password = generatePassword(5, true, true);
         $this->assertEquals(5, strlen($this->password));
@@ -61,7 +61,7 @@ class GenPassTest extends TestCase
         $this->assertTrue($this->containsDigit($this->password));
     }
     #[DataProvider('passwordProvider')]
-    public function testGeneratePasswordWithSpecialCharacters()
+    public function testGeneratePasswordWithSpecialCharacters(): void
     {
         $this->password = generatePassword(5, true, true, true);
         $this->assertEquals(5, strlen($this->password));
@@ -89,112 +89,52 @@ class GenPassTest extends TestCase
     }
 }
 
-// tutor's
-// <?php
 
-// namespace App\Tests;
+    // public function testGeneratePassword($length, $includeUppercase, $includeDigits, $includeSpecial, $expectedContains)
+    // {
+    //     $this->password = generatePassword($length, $includeUppercase, $includeDigits, $includeSpecial);
+    //     $this->assertEquals($length, strlen($this->password));
 
-// use PHPUnit\Framework\TestCase;
+    //     // Check for the expected character types
+    //     $hasUppercase = false;
+    //     $hasDigit = false;
+    //     $hasSpecial = false;
+        
+    //     // Character sets for checks
+    //     $specialChars = '!@#$%^&*(),.?":{}|<>';
 
-// use function App\Implementations\generatePassword;
+    //     // Iterate over each character in the password and check types
+    //     for ($i = 0; $i < strlen($this->password); $i++) {
+    //         $char = $this->password[$i];
 
-// class PasswordGeneratorTest extends TestCase
-// {
-//     // BEGIN
-//     public function testGeneratePasswordDefaultLength(): void
-//     {
-//         $password = generatePassword();
-//         $this->assertEquals(5, mb_strlen($password), 'Password should be of default length 5');
-//     }
+    //         if (ctype_upper($char)) {
+    //             $hasUppercase = true;
+    //         }
 
-//     public function testGeneratePasswordCustomLength(): void
-//     {
-//         $length = 10;
-//         $password = generatePassword($length);
-//         $this->assertEquals($length, mb_strlen($password), 'Password should be of specified length');
-//     }
+    //         if (ctype_digit($char)) {
+    //             $hasDigit = true;
+    //         }
 
-//     public function testGeneratePasswordOnlyLowercase(): void
-//     {
-//         $password = generatePassword(8);
-//         $this->assertEquals(mb_strtolower($password), $password, 'Password should contain only lowercase letters');
-//     }
+    //         if (strpos($specialChars, $char) !== false) {
+    //             $hasSpecial = true;
+    //         }
+    //     }
 
-//     public function testGeneratePasswordWithUppercase(): void
-//     {
-//         $password = generatePassword(8, includeUppercase: true);
-//         $this->assertNotEquals(mb_strtolower($password), $password, 'Password should contain at least one uppercase letter');
-//     }
+    //     // Assertions based on flags
+    //     $this->assertEquals($expectedContains['uppercase'], $hasUppercase);
+    //     $this->assertEquals($expectedContains['digit'], $hasDigit);
+    //     $this->assertEquals($expectedContains['special'], $hasSpecial);
+    // }
 
-//     public function testGeneratePasswordWithDigits(): void
-//     {
-//         $password = generatePassword(8, includeDigits: true);
-//         $containsDigits = false;
+    // public function passwordProvider()
+    // {
+    //     return [
+    //         [8, false, false, false, ['uppercase' => false, 'digit' => false, 'special' => false]],
+    //         [5, true, false, false, ['uppercase' => true, 'digit' => false, 'special' => false]],
+    //         [5, true, true, false, ['uppercase' => true, 'digit' => true, 'special' => false]],
+    //         [5, true, true, true, ['uppercase' => true, 'digit' => true, 'special' => true]],
+    //         [10, false, true, true, ['uppercase' => false, 'digit' => true, 'special' => true]],
+    //     ];
+    // }
 
-//         for ($i = 0; $i < mb_strlen($password); $i++) {
-//             if (is_numeric($password[$i])) {
-//                 $containsDigits = true;
-//                 break;
-//             }
-//         }
-
-//         $this->assertTrue($containsDigits, "Password should contain at least one digit character, password: {$password}");
-//     }
-
-//     public function testGeneratePasswordWithSpecialCharacters(): void
-//     {
-//         $password = generatePassword(8, includeSpecial: true);
-//         $specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
-//         $containsSpecial = false;
-
-//         for ($i = 0; $i < mb_strlen($password); $i++) {
-//             if (str_contains($specialChars, $password[$i])) {
-//                 $containsSpecial = true;
-//                 break;
-//             }
-//         }
-
-//         $this->assertTrue($containsSpecial, 'Password should contain at least one special character');
-//     }
-
-//     public function testGeneratePasswordWithAllOptions(): void
-//     {
-//         $password = generatePassword(12, true, true, true);
-
-//         $specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
-//         $containsSpecial = false;
-
-//         for ($i = 0; $i < mb_strlen($password); $i++) {
-//             if (strpos($specialChars, $password[$i]) !== false) {
-//                 $containsSpecial = true;
-//                 break;
-//             }
-//         }
-
-//         $containsDigits = false;
-
-//         for ($i = 0; $i < mb_strlen($password); $i++) {
-//             if (is_numeric($password[$i])) {
-//                 $containsDigits = true;
-//                 break;
-//             }
-//         }
-
-//         $this->assertNotEquals(mb_strtolower($password), $password, 'Password should contain at least one uppercase letter');
-//         $this->assertTrue($containsDigits, "Password should contain at least one digit character, password: {$password}");
-//         $this->assertTrue($containsSpecial, "Password should contain at least one special character, password: {$password}");
-//     }
-
-//     public function testGeneratePasswordZeroLength(): void
-//     {
-//         $password = generatePassword(0);
-//         $this->assertEquals('', $password, 'Password should be an empty string for length 0');
-//     }
-
-//     public function testGeneratePasswordOneLength(): void
-//     {
-//         $password = generatePassword(1);
-//         $this->assertEquals(1, mb_strlen($password), 'Password should be an empty string for length 0');
-//     }
-//     // END
 // }
