@@ -21,6 +21,7 @@ use function Cart\addItem;
 use function Cart\getItems;
 use function Cart\getCost;
 use function Cart\getCount;
+use function Cart\getItemsCount;
 
 class CartTest extends TestCase
 {
@@ -35,29 +36,30 @@ class CartTest extends TestCase
     public function testAddItemToCart()
     {
         $cart = getCart();
-        $item = ['name' => 'car', 'price' => 100];
-        addItem($cart, $item, 3);
+        $good = ['name' => 'car', 'price' => 100];
+        addItem($cart, $good, 3);
         
         $this->assertCount(1, $cart['items']);
-        $this->assertEquals($item, $cart['items'][0]['good']);
+        $this->assertEquals($good, $cart['items'][0]['good']);
         $this->assertEquals(3, $cart['items'][0]['count']);
     }
 
-    public function testGetItemsReturnsCorrectItems()
+    public function testGetItemsListAndQuantityOfItems()
     {
         $cart = getCart();
         addItem($cart, ['name' => 'car', 'price' => 100], 3);
         addItem($cart, ['name' => 'tv', 'price' => 10], 5);
         
         $items = getItems($cart);
-        $this->assertCount(2, $items);
+        $this->assertEquals(2, getItemsCount($cart));
+        // $this->assertCount(2, $items);
         $this->assertEquals(['name' => 'car', 'price' => 100], $items[0]['good']);
         $this->assertEquals(3, $items[0]['count']);
         $this->assertEquals(['name' => 'tv', 'price' => 10], $items[1]['good']);
         $this->assertEquals(5, $items[1]['count']);
     }
 
-    public function testGetCountReturnsTotalQuantity()
+    public function testGetCountTotalQuantityOfGoods()
     {
         $cart = getCart();
         addItem($cart, ['name' => 'car', 'price' => 100], 3);
