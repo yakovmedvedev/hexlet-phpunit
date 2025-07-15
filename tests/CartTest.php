@@ -52,7 +52,6 @@ class CartTest extends TestCase
         
         $items = getItems($cart);
         $this->assertEquals(2, getItemsCount($cart));
-        // $this->assertCount(2, $items);
         $this->assertEquals(['name' => 'car', 'price' => 100], $items[0]['good']);
         $this->assertEquals(3, $items[0]['count']);
         $this->assertEquals(['name' => 'tv', 'price' => 10], $items[1]['good']);
@@ -77,3 +76,48 @@ class CartTest extends TestCase
         $this->assertEquals(350, getCost($cart));
     }
 }
+
+// <?php
+
+// declare(strict_types=1);
+
+// use Cart;
+
+// class CartTest extends \PHPUnit\Framework\TestCase
+// {
+//     public function testCartFunctions()
+//     {
+//         // Initialize the cart
+//         $cart = Cart\getCart();
+
+//         // Test adding items
+//         $good1 = ['name' => 'car', 'price' => 100];
+//         $count1 = 4;
+//         $cart = Cart\addItem($cart, $good1, $count1);
+        
+//         $this->assertCount(1, $cart['items']);
+        
+//         $good2 = ['name' => 'tv', 'price' => 50];
+//         $count2 = 2;
+//         $cart = Cart\addItem($cart, $good2, $count2);
+        
+//         $this->assertCount(2, $cart['items']);
+
+//         // Test getting items
+//         $items = Cart\getItems($cart);
+//         $this->assertIsArray($items);
+//         $this->assertCount(2, $items);
+
+//         // Test getting items count
+//         $itemsCount = Cart\getItemsCount($cart);
+//         $this->assertEquals(2, $itemsCount);
+
+//         // Test getting total goods count
+//         $totalGoodsCount = Cart\getCount($cart);
+//         $this->assertEquals(6, $totalGoodsCount); // 4 + 2
+
+//         // Test getting the total cost
+//         $totalCost = Cart\getCost($cart);
+//         $this->assertEquals(600, $totalCost); // (100 * 4) + (50 * 2)
+//     }
+// }
