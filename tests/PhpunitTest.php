@@ -21,18 +21,18 @@ class PhpunitTest extends TestCase
 {
     private $array;
 
+
     protected function setUp(): void
     {
         $this->array = [];
     }
     public function testArray(): void
     {
-        // $string = "ewewewewe";
-        $array = [];
-        $string = 'a';
+        $string = "that's a string!";
         makeArray($string);
 
-        $this->assertTrue(in_array('a', $array));
+        $this->assertTrue(in_array("a", makeArray($string)));
+        $this->assertEquals("a", in_array("a", makeArray($string)));
     }
 
 }
