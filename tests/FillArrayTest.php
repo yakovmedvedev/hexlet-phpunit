@@ -25,15 +25,17 @@ class FillArrayTest extends TestCase
         $coll = [1, 2, 3, 4];
         $value = '*';
         $start = 0;
-        $end = 2;
-        $this->assertEquals(['*', '*', 3, 4], fill($coll, $value, $start, $end));
-        $end = 7;
+        $end = count($coll);
         $this->assertEquals(['*', '*', '*', '*'], fill($coll, $value, $start, $end));
+        $start = null;
+        $this->assertEquals(['*', '*', '*', '*'], fill($coll, $value, $start, $end));
+        $start = 3;
+        $end = 2;
+        $value = '777';
+        $this->assertEquals(['*', '*', '*', '*'], fill($coll, $value, $start, $end));
+        $end = 7;
+        $this->assertEquals(['*', '*', '*', '777'], fill($coll, $value, $start, $end));
         $start = 8;
-        $this->assertEquals(['*', '*', '*', '*'], $coll);
-    
-        $this->assertEquals(['*', '*', '*', '*'], fill($coll, $value));
-
-
+        $this->assertEquals(['*', '*', '*', '777'], $coll);
     }
 }

@@ -4,14 +4,17 @@ namespace FillArray;
 
 $coll =  [1, 2, 3, 4];
 $value = '*';
-$start = 0;
-$end = 2;
+$start = null;
+$end = null;
 function fill(&$coll, $value, $start, $end)
 {
     if ($start > $end || $start > count($coll)) {
         return $coll;
     }
-    if ($end > count($coll)) {
+        if ($start === null) {
+        $start = 0;
+    }
+    if ($end > count($coll) || $end === null) {
     $end = count($coll);
     }
     for ($i = $start; $i < $end; $i++) {
