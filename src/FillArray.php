@@ -4,9 +4,8 @@ namespace FillArray;
 
 $coll =  [1, 2, 3, 4];
 $value = '*';
-$start = null;
-$end = null;
-function fill(&$coll, $value, $start, $end)
+
+function fill(array &$coll, $value, $start = 0, $end = null)
 {
     if ($start > $end || $start > count($coll)) {
         return $coll;
@@ -14,9 +13,10 @@ function fill(&$coll, $value, $start, $end)
         if ($start === null) {
         $start = 0;
     }
-    if ($end > count($coll) || $end === null) {
+    if ($end > count($coll)) {
     $end = count($coll);
     }
+    $realEnd = $end ?? count($coll);
     for ($i = $start; $i < $end; $i++) {
 
         $coll[$i] = $value;
@@ -24,4 +24,4 @@ function fill(&$coll, $value, $start, $end)
     print_r($coll);
     return $coll;
 }
-fill($coll, $value, $start, $end);
+// fill($coll, $value, $start, $end);
