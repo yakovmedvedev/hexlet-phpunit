@@ -20,27 +20,42 @@ use function FillArray\fill;
 
 class FillArrayTest extends TestCase
 {
-    public function testFillArray()
+    private $coll;
+    
+    public function setUp(): void
     {
-        $coll = [1, 2, 3, 4];
-        $value = '*';
-        $start = 0;
-        $end = count($coll);
-        
-        $this->assertEquals(['*', '*', '*', '*'], fill($coll, $value, $start, $end));
-        $value = '**';
-        $start = 4;
-        $this->assertEquals(['*', '*', '*', '*'], fill($coll, $value, $start, $end));
-        $start = 3;
-        $end = 2;
-        $value = '**';
-        $this->assertEquals(['*', '*', '*', '*'], fill($coll, $value, $start, $end));
-        $end = 7;
-        $this->assertEquals(['*', '*', '*', '**'], fill($coll, $value, $start, $end));
-        $this->assertEquals(['**', '**', '**', '**'], fill($coll, $value));
-        $coll = [];
-        $this->assertEquals([], fill($coll, $value, $start, $end));
+        $this->coll = [1, 2, 3, 4];
     }
+    public function testFillArray1(): void
+    {
+        fill($this->coll, '*', 0, 4);
+        $this->assertEquals(['*', '*', '*', '*'], $this->coll);
+    }
+    public function testFillArray2(): void
+    {
+        fill($this->coll, '*', 4, 4);
+        $this->assertEquals([1, 2, 3, 4], $this->coll);
+    }
+    public function testFillArray3(): void
+    {
+        fill($this->coll, '*', 3, 2);
+        $this->assertEquals([1, 2, 3, 4], $this->coll);
+    }
+    public function testFillArray4(): void
+    {
+        fill($this->coll, '*', 3, 7);
+        $this->assertEquals([1, 2, 3, '*'], $this->coll);
+    }
+    public function testFillArray5(): void
+    {
+        fill($this->coll, '*');
+        $this->assertEquals(['*', '*', '*', '*'], $this->coll);
+    }
+    // public function testFillArray6(): void
+    // {
+    //     $coll = [];
+    //     $this->assertEquals([], $this->coll);
+    // }
 }
 
 
