@@ -17,11 +17,16 @@ function fill(array &$coll, $value, $start = 0, $end = null)
     $end = count($coll);
     }
     $realEnd = $end ?? count($coll);
-    for ($i = $start; $i < $end; $i++) {
+    for ($i = $start; $i < $realEnd; $i++) {
 
         $coll[$i] = $value;
     }
     print_r($coll);
     return $coll;
 }
-// fill($coll, $value, $start, $end);
+fill($coll, $value);
+print_r($coll);
+fill($coll, $value = '#', $start = 2, $end = 20);
+print_r($coll);
+fill($coll, $value, $start = 20);
+print_r($coll);
