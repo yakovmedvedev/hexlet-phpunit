@@ -17,17 +17,18 @@ function makeList($path)
     if ($pathParts['extension'] == 'json') {
         $list = json_decode($list);
     }
-    // if ($pathParts['extension'] == 'yaml') {
-    //     $list = yaml_parse($list);
-    // }
+    if ($pathParts['extension'] == 'yaml') {
+        $list = yaml_parse($list);
+    }
     print_r($list);
 
     foreach ($list as $item) {
         $item = "<li>" . $item . "</li>\n";
         $newList[] = $item;
     }
-    return $newList;
-    $htmlList = "<ul>\n" . implode('', $newList) . "</ul>\n";
+    $newList = implode('', $newList);
+    $htmlList = "<ul>\n" . $newList . "</ul>\n";
+    print_r($htmlList);
 
     return $htmlList;
 }
