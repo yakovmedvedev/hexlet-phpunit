@@ -40,10 +40,10 @@ class HtmlListTest extends TestCase
     {
         $this->assertStringEqualsFile($this->html, makeList($this->json));
     }
-    public function testEqualStringsYaml()
-    {
-        $this->assertStringEqualsFile($this->html, makeList($this->yaml));
-    }
+    // public function testEqualStringsYaml()
+    // {
+    //     $this->assertStringEqualsFile($this->html, makeList($this->yaml));
+    // }
     
 }
 

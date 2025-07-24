@@ -12,7 +12,7 @@ function makeList($path)
     // print_r($pathParts['extension']);
 
     if ($pathParts['extension'] == 'csv') {
-        $list = str_getcsv($list);
+        $list = str_getcsv($list, escape: '\\');
     }
     if ($pathParts['extension'] == 'json') {
         $list = json_decode($list);
