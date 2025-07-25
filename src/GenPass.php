@@ -25,10 +25,6 @@ function generatePassword($length = 5, $includeUppercase = false, $includeDigits
 
     print_r('$characterSet: ' . $characterSet . "\n");
 
-    // Check if at least one character type is included
-    if (strlen($characterSet) === 0) {
-        return 'At least one character type must be included.';
-    }
 
     // Ensure the password contains at least one of each selected type
 
