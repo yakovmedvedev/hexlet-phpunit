@@ -20,7 +20,7 @@ use function DecartToPolarChange\makePoint;
 use function DecartToPolarChange\getX;
 use function DecartToPolarChange\getY;
 
-class DecartToPolarTest extends TestCase
+class DecartToPolarChangeTest extends TestCase
 {
     private $x;
     private $y;
@@ -30,11 +30,17 @@ class DecartToPolarTest extends TestCase
         $this->x = 5;
         $this->y = 8;
     }
-    public function testMakePoint()
+    public function testMakePolarPoint()
     {
-        $this->assertEquals([
-    ['angle' => 1.0121970114513],
-    ['radius' => 9.4339811320566]
-        ], makePoint($this->x, $this->y));
+        $decartPoint = makePoint($this->x, $this->y);
+        $this->assertEquals(['angle' => 1.01, 'radius' => 9.43], $decartPoint);
+    }
+    public function testGetXPointInDecartSystem()
+    {
+        $this->assertEquals(getX(makePoint($this->x, $this->y)), 5);
+    }
+    public function testGetYPointInDecartSystem()
+    {
+        $this->assertEquals(round(getY(makePoint($this->x, $this->y))), 8);
     }
 }
