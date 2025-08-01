@@ -22,19 +22,24 @@ use function DecartToPolarChange\getY;
 
 class DecartToPolarTest extends TestCase
 {
-    private $x;
-    private $y;
+    private $x = 5;
+    private $y = 8;
 
     public function setUp(): void
     {
-        $this->x = 5;
-        $this->y = 8;
+        $this->x;
+        $this->y;
     }
-    public function testMakePoint()
+    public function testMakePointInPolarSystem()
     {
-        $this->assertEquals([
-    ['angle' => 1.0121970114513],
-    ['radius' => 9.4339811320566]
-        ], makePoint($this->x, $this->y));
+        $this->assertEquals(makePoint($this->x, $this->y), ['angle' => 1.0121970114513341, 'radius' => 9.433981132056603]);
+    }
+    public function testGetXPointInDecartSystem()
+    {
+        $this->assertEquals(getX(makePoint($this->x, $this->y)), 5);
+    }
+    public function testGetYPointInDecartSystem()
+    {
+        $this->assertEquals(round(getY(makePoint($this->x, $this->y))), 8);
     }
 }
