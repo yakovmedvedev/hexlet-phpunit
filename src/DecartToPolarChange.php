@@ -7,7 +7,7 @@ function makePoint($x, $y)
     // конвертация
     return [
         'angle' => round(atan2($y, $x), 2),
-        'radius' => round(sqrt($x ** 2 + $y ** 2),2)
+        'radius' => round(sqrt($x ** 2 + $y ** 2), 2)
     ];
 
 }
