@@ -30,16 +30,16 @@ class DecartToPolarChangeTest extends TestCase
         $this->x;
         $this->y;
     }
-<<<<<<< HEAD:tests/DecartToPolarTest.php
-    public function testMakePointInPolarSystem()
-    {
-        $this->assertEquals(makePoint($this->x, $this->y), ['angle' => 1.0121970114513341, 'radius' => 9.433981132056603]);
-=======
+// <<<<<<< HEAD:tests/DecartToPolarTest.php
+//     public function testMakePointInPolarSystem()
+//     {
+//         $this->assertEquals(makePoint($this->x, $this->y), ['angle' => 1.0121970114513341, 'radius' => 9.433981132056603]);
+// =======
     public function testMakePolarPoint()
     {
         $decartPoint = makePoint($this->x, $this->y);
         $this->assertEquals(['angle' => 1.01, 'radius' => 9.43], $decartPoint);
->>>>>>> 321f0d172b3425d74684b5f7fbf5cb4789f30f45:tests/DecartToPolarChangeTest.php
+// >>>>>>> 321f0d172b3425d74684b5f7fbf5cb4789f30f45:tests/DecartToPolarChangeTest.php
     }
     public function testGetXPointInDecartSystem()
     {
