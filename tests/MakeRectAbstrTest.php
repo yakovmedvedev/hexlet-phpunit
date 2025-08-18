@@ -22,6 +22,7 @@ class MakeRectAbstrTest extends TestCase
 {
     private $x;
     private $y;
+    private $x2;
     private $width;
     private $height;
 
@@ -29,6 +30,7 @@ class MakeRectAbstrTest extends TestCase
     {
         $this->x = -1;
         $this->y = 1;
+        $this->x2 = 1;
         $this->width = 4;
         $this->height = 5;
     }
@@ -57,5 +59,9 @@ class MakeRectAbstrTest extends TestCase
         $rectangle = makeRectangle(makeDecartPoint($this->x, $this->y), $this->width, $this->height);
         
         $this->assertTrue(containsOrigin($rectangle));
+
+        $rectangle = makeRectangle(makeDecartPoint($this->x2, $this->y), $this->width, $this->height);
+
+        $this->assertNotTrue(containsOrigin($rectangle));
     }
 }
