@@ -30,7 +30,7 @@ function containsOrigin($rectangle)
 {
     $topLeft = $rectangle['topLeft'];
     $bottomRight = ['x' => $topLeft['x'] + $rectangle['width'], 'y' => $topLeft['y'] - $rectangle['height']];
-    return (($topLeft['x'] < 0 && $bottomRight['x'] > 0) && ($topLeft['y'] > 0 && $bottomRight['y'] < 0 )) ? 'true' : 'false';
+    return ($topLeft['x'] < 0 && $bottomRight['x'] > 0) && ($topLeft['y'] > 0 && $bottomRight['y'] < 0 );
 }
 $width = 4;
 $height = 5;

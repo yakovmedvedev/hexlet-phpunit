@@ -61,6 +61,6 @@ class IsPrimeTest extends TestCase
     public function testIsPrime($number, $expected)
     {
         $result = isPrime($number);
-        $this->assertEquals($expected, isPrime($number));
+        $this->assertEquals($expected, $result);
     }
 }
