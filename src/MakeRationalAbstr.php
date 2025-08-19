@@ -1,6 +1,7 @@
 <?php
 
-function gcd($x, $y) {
+function gcd(int $x, int $y): int
+{
     while ($y != 0) {
         $temp = $y;
         $y = $x % $y;
@@ -9,46 +10,55 @@ function gcd($x, $y) {
     return abs($x);
 }
 
+function lcm(int $x, int $y): int
+{
+    return ($x * $y) / gcd($x, $y);
+}
+
 function makeRational($num, $denom)
 {
+    if ($denom < 0) {
+        $num = -$num;
+        $denom = -$denom;
+    }
     $gcd = gcd($num, $denom);
     return ['num' => $num / $gcd, 'denom' => $denom / $gcd];
 }
 
-
-
-function getNum($rational)
+function getNum($x)
 {
-    return $rational['num'];
+    return $x['num'];
 }
-function getDenom($rational)
+function getDenom($x)
 {
-    return $rational['denom'];
+    return $x['denom'];
 }
 
-function lcm($x, $y)
+function ratToString($x)
 {
-    return ($x * $y) / gcd($x, $y);
+    return getNum($x) . '/' . getDenom($x);
 }
+
 function add($rational1, $rational2)
 {
     $commonDenom = lcm($rational1['denom'], $rational2['denom']);
     $rational1['num'] = $rational1['num'] * ($commonDenom / $rational1['denom']);
     $rational2['num'] = $rational2['num'] * ($commonDenom / $rational2['denom']);
     $rational3['num'] = $rational1['num'] + $rational2['num'];
-    return simplifyFraction($rational3['num'], $commonDenom);
+    return ratToString(makeRational($rational3['num'], $commonDenom));
 }
 function sub($rational1, $rational2)
 {
-    $num3 = $rational1['num'] - $rational2['num'];
-    $denom3 = $rational1['denom'] - $rational2['denom'];
-    return makeRational($num3, $denom3);
+    $commonDenom = lcm($rational1['denom'], $rational2['denom']);
+    $rational1['num'] = $rational1['num'] * ($commonDenom / $rational1['denom']);
+    $rational2['num'] = $rational2['num'] * ($commonDenom / $rational2['denom']);
+    $rational3['num'] = $rational1['num'] - $rational2['num'];
+    return ratToString(makeRational($rational3['num'], $commonDenom));
 }
 
-//$num = 10;
-//$denom = 20;
+print_r(6 % 8);
 $rational1 = makeRational(6,8);
-$rational2 = makeRational(3,9);
+$rational2 = makeRational(3,-9);
 print_r("rational1");
 print_r("\n");
 print_r($rational1);
@@ -63,14 +73,8 @@ print_r(gcd(12, 21));
 print_r("\n");
 print_r("lcm");
 print_r("\n");
-print_r(lcm(12, 21));
+print_r(lcm(6, 8));
 print_r("\n");
-//$gcd = gcd($rational1['num'], $rational1['denom']);
-//print_r($gcd);
-//print_r("\n");
-//$gcd = gcd($rational2['num'], $rational2['denom']);
-//print_r($gcd);
-//print_r("\n");
 print_r("num1");
 print_r("\n");
 print_r(getNum($rational1));
@@ -94,6 +98,7 @@ print_r("\n");
 print_r("sub");
 print_r("\n");
 print_r(sub($rational1, $rational2));
+print_r("\n");
 
 
 
@@ -173,19 +178,19 @@ print_r(sub($rational1, $rational2));
 //list($resultNumeratorSub, $resultDenominatorSub) = subtractFractions($numerator1, $denominator1, $numerator2, $denominator2);
 //echo "Subtraction Result: {$resultNumeratorSub}/{$resultDenominatorSub}\n";
 //
-//?>
-<!--Explanation:-->
-<!--GCD Function: This function calculates the GCD of two numbers using the Euclidean algorithm.-->
-<!---->
-<!--LCM Function: This function calculates the LCM using the relationship between GCD and LCM.-->
-<!---->
-<!--Add/Subtract Functions: These functions find a common denominator, convert the fractions, perform the operation (addition or subtraction), and return the result.-->
-<!---->
-<!--Simplify Function: This function simplifies the resulting fraction by dividing both numerator and denominator by their GCD.-->
-<!---->
-<!--Example Usage: The last part of the script demonstrates the addition and subtraction of two fractions (1/4 and 1/6) and outputs the results.-->
-<!---->
-<!--Feel free to modify the numerators and denominators in the example usage to test with different fractions!-->
+//?
+//<!--Explanation:-->
+//<!--GCD Function: This function calculates the GCD of two numbers using the Euclidean algorithm.-->
+//<!---->
+//<!--LCM Function: This function calculates the LCM using the relationship between GCD and LCM.-->
+//<!---->
+//<!--Add/Subtract Functions: These functions find a common denominator, convert the fractions, perform the operation (addition or subtraction), and return the result.-->
+//<!---->
+//<!--Simplify Function: This function simplifies the resulting fraction by dividing both numerator and denominator by their GCD.-->
+//<!---->
+//<!--Example Usage: The last part of the script demonstrates the addition and subtraction of two fractions (1/4 and 1/6) and outputs the results.-->
+//<!---->
+//<!--Feel free to modify the numerators and denominators in the example usage to test with different fractions!-->
 
 
 
