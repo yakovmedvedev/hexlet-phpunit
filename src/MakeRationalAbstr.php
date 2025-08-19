@@ -32,9 +32,11 @@ function lcm($x, $y)
 }
 function add($rational1, $rational2)
 {
-    $num3 = $rational1['num'] + $rational2['num'];
-    $denom3 = $rational2['denom'] + $rational1['denom'];
-    return makeRational($num3, $denom3);
+    $commonDenom = lcm($rational1['denom'], $rational2['denom']);
+    $rational1['num'] = $rational1['num'] * ($commonDenom / $rational1['denom']);
+    $rational2['num'] = $rational2['num'] * ($commonDenom / $rational2['denom']);
+    $rational3['num'] = $rational1['num'] + $rational2['num'];
+    return simplifyFraction($rational3['num'], $commonDenom);
 }
 function sub($rational1, $rational2)
 {
