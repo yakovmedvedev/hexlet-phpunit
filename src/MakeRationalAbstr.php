@@ -25,6 +25,11 @@ function getDenom($rational)
 {
     return $rational['denom'];
 }
+
+function lcm($x, $y)
+{
+    return ($x * $y) / gcd($x, $y);
+}
 function add($rational1, $rational2)
 {
     $num3 = $rational1['num'] + $rational2['num'];
@@ -40,7 +45,7 @@ function sub($rational1, $rational2)
 
 //$num = 10;
 //$denom = 20;
-$rational1 = makeRational(10,3);
+$rational1 = makeRational(6,8);
 $rational2 = makeRational(3,9);
 print_r("rational1");
 print_r("\n");
@@ -49,6 +54,14 @@ print_r("\n");
 print_r("rational2");
 print_r("\n");
 print_r($rational2);
+print_r("\n");
+print_r("gcd");
+print_r("\n");
+print_r(gcd(12, 21));
+print_r("\n");
+print_r("lcm");
+print_r("\n");
+print_r(lcm(12, 21));
 print_r("\n");
 //$gcd = gcd($rational1['num'], $rational1['denom']);
 //print_r($gcd);
@@ -83,6 +96,97 @@ print_r(sub($rational1, $rational2));
 
 
 //AI's
+//Hello. I need to find the least common multiple of two numbers in php. I have two fractions with different denominators. I need to add and subtract them. Can you outlined the script? Thanks
+//
+//OpenAI logo
+//OpenAI GPT-4o mini
+//2 minutes ago
+//Certainly! To add and subtract fractions with different denominators in PHP, you'll first need to find the least common multiple (LCM) of the denominators. Here's how you can outline your script:
+//
+//Define a function to calculate the GCD (Greatest Common Divisor).
+//Define a function to calculate the LCM using the GCD.
+//Input the two fractions.
+//Calculate the LCM of the denominators.
+//Convert each fraction to have the same denominator.
+//Perform the addition or subtraction.
+//Simplify the resulting fraction if necessary.
+//Here is an example implementation:
+//
+//PHP
+//<?php
+//
+//// Function to calculate GCD
+//function gcd($a, $b) {
+//    while ($b != 0) {
+//        $temp = $b;
+//        $b = $a % $b;
+//        $a = $temp;
+//    }
+//    return $a;
+//}
+//
+//// Function to calculate LCM
+//function lcm($a, $b) {
+//    return ($a * $b) / gcd($a, $b);
+//}
+//
+//// Function to add two fractions
+//function addFractions($numerator1, $denominator1, $numerator2, $denominator2) {
+//    $commonDenominator = lcm($denominator1, $denominator2);
+//    $newNumerator1 = $numerator1 * ($commonDenominator / $denominator1);
+//    $newNumerator2 = $numerator2 * ($commonDenominator / $denominator2);
+//    $resultNumerator = $newNumerator1 + $newNumerator2;
+//
+//    return simplifyFraction($resultNumerator, $commonDenominator);
+//}
+//
+//// Function to subtract two fractions
+//function subtractFractions($numerator1, $denominator1, $numerator2, $denominator2) {
+//    $commonDenominator = lcm($denominator1, $denominator2);
+//    $newNumerator1 = $numerator1 * ($commonDenominator / $denominator1);
+//    $newNumerator2 = $numerator2 * ($commonDenominator / $denominator2);
+//    $resultNumerator = $newNumerator1 - $newNumerator2;
+//
+//    return simplifyFraction($resultNumerator, $commonDenominator);
+//}
+//
+//// Function to simplify a fraction
+//function simplifyFraction($numerator, $denominator) {
+//    $gcd = gcd(abs($numerator), abs($denominator));
+//    return [$numerator / $gcd, $denominator / $gcd];
+//}
+//
+//// Input: Fractions
+//$numerator1 = 1;
+//$denominator1 = 4;
+//
+//$numerator2 = 1;
+//$denominator2 = 6;
+//
+//// Add fractions
+//list($resultNumeratorAdd, $resultDenominatorAdd) = addFractions($numerator1, $denominator1, $numerator2, $denominator2);
+//echo "Addition Result: {$resultNumeratorAdd}/{$resultDenominatorAdd}\n";
+//
+//// Subtract fractions
+//list($resultNumeratorSub, $resultDenominatorSub) = subtractFractions($numerator1, $denominator1, $numerator2, $denominator2);
+//echo "Subtraction Result: {$resultNumeratorSub}/{$resultDenominatorSub}\n";
+//
+//?>
+<!--Explanation:-->
+<!--GCD Function: This function calculates the GCD of two numbers using the Euclidean algorithm.-->
+<!---->
+<!--LCM Function: This function calculates the LCM using the relationship between GCD and LCM.-->
+<!---->
+<!--Add/Subtract Functions: These functions find a common denominator, convert the fractions, perform the operation (addition or subtraction), and return the result.-->
+<!---->
+<!--Simplify Function: This function simplifies the resulting fraction by dividing both numerator and denominator by their GCD.-->
+<!---->
+<!--Example Usage: The last part of the script demonstrates the addition and subtraction of two fractions (1/4 and 1/6) and outputs the results.-->
+<!---->
+<!--Feel free to modify the numerators and denominators in the example usage to test with different fractions!-->
+
+
+
 //Hello. Please tell me how to normalize a fraction in PHP
 //
 //OpenAI logo
