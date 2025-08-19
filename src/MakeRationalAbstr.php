@@ -14,7 +14,13 @@ function lcm(int $x, int $y): int
 {
     return ($x * $y) / gcd($x, $y);
 }
-
+//function normalize(int $x, int $y): int
+//{
+//    if ($y < 0) {
+//       $x = -$x;
+//       $y = -$y;
+//    }
+//}
 function makeRational($num, $denom)
 {
     if ($denom < 0) {
@@ -56,6 +62,13 @@ function sub($rational1, $rational2)
     return ratToString(makeRational($rational3['num'], $commonDenom));
 }
 
+//function simplifyFraction($numerator, $denominator) {
+//    $gcd = gcd(abs($numerator), abs($denominator));
+//    return [$numerator / $gcd, $denominator / $gcd];
+//}
+
+//$num = 10;
+//$denom = 20;
 print_r(6 % 8);
 $rational1 = makeRational(6,8);
 $rational2 = makeRational(3,-9);
@@ -75,6 +88,12 @@ print_r("lcm");
 print_r("\n");
 print_r(lcm(6, 8));
 print_r("\n");
+//$gcd = gcd($rational1['num'], $rational1['denom']);
+//print_r($gcd);
+//print_r("\n");
+//$gcd = gcd($rational2['num'], $rational2['denom']);
+//print_r($gcd);
+//print_r("\n");
 print_r("num1");
 print_r("\n");
 print_r(getNum($rational1));
@@ -100,6 +119,50 @@ print_r("\n");
 print_r(sub($rational1, $rational2));
 print_r("\n");
 
+
+//tutor's
+//function makeRational($numer, $denom)
+//{
+//    if ($denom < 0) {
+//        $numer = -$numer;
+//        $denom = -$denom;
+//    }
+//
+//    $gcd = gcd($numer, $denom);
+//    return ['numer' => $numer / $gcd, 'denom' => $denom / $gcd];
+//}
+//
+//function getNumer($rational)
+//{
+//    return $rational['numer'];
+//}
+//
+//function getDenom($rational)
+//{
+//    return $rational['denom'];
+//}
+//
+//function add($rational1, $rational2)
+//{
+//    return makeRational(
+//        getNumer($rational1) * getDenom($rational2) + getNumer($rational2) * getDenom($rational1),
+//        getDenom($rational1) * getDenom($rational2)
+//    );
+//}
+//
+//function sub($rational1, $rational2)
+//{
+//    return makeRational(
+//        getNumer($rational1) * getDenom($rational2) - getNumer($rational2) * getDenom($rational1),
+//        getDenom($rational1) * getDenom($rational2)
+//    );
+//}
+//// END
+//
+//function ratToString($rat)
+//{
+//    return getNumer($rat) . '/' . getDenom($rat);
+//}
 
 
 //AI's
