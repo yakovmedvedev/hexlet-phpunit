@@ -1,5 +1,7 @@
 <?php
 
+namespace Make\Rational\Abstr;
+
 function gcd(int $x, int $y): int
 {
     while ($y != 0) {
@@ -49,14 +51,14 @@ function add($rational1, $rational2)
 function sub($rational1, $rational2)
 {
     $commonDenom = lcm(getDenom($rational1), getDenom($rational2));
-    $rational1['num'] = getNum($rational1) * ($commonDenom / $rational1['denom']);
-    $rational2['num'] = getNum($rational2) * ($commonDenom / $rational2['denom']);
+    $rational1['num'] = getNum($rational1) * ($commonDenom / getDenom($rational1));
+    $rational2['num'] = getNum($rational2) * ($commonDenom / getDenom($rational2));
     $resultNum = $rational1['num'] - $rational2['num'];
     return makeRational($resultNum, $commonDenom);
 }
 
 $rational1 = makeRational(6,8);
-$rational2 = makeRational(3,-8);
+$rational2 = makeRational(2,-9);
 print_r("rational1");
 print_r("\n");
 print_r(ratToString($rational1));
@@ -65,9 +67,21 @@ print_r("rational2");
 print_r("\n");
 print_r(ratToString($rational2));
 print_r("\n");
+print_r("CommonDenom");
+print_r("\n");
+print_r(lcm(getDenom($rational1), getDenom($rational2)));
+print_r("\n");
+print_r("newNum1");
+print_r("\n");
+print_r(getNum($rational1) * lcm(getDenom($rational1), getDenom($rational2)) / getDenom($rational1));
+print_r("\n");
+print_r("newNum2");
+print_r("\n");
+print_r(getNum($rational2) * lcm(getDenom($rational1), getDenom($rational2)) / getDenom($rational2));
+print_r("\n");
 print_r("gcd");
 print_r("\n");
-print_r(gcd(12, 21));
+print_r(gcd(6, -9));
 print_r("\n");
 print_r("lcm(rational1)");
 print_r("\n");
