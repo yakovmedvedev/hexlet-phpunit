@@ -23,6 +23,7 @@ use function Make\Rational\Abstr\getNum;
 use function Make\Rational\Abstr\getDenom;
 use function Make\Rational\Abstr\add;
 use function Make\Rational\Abstr\sub;
+use function Make\Rational\Abstr\ratToString;
 
 class MakeRationalAbstrTest extends TestCase
 {
@@ -69,5 +70,17 @@ class MakeRationalAbstrTest extends TestCase
     public function testCommonDenom()
     {
         $this->assertEquals(36, lcm(getDenom(makeRational($this->x, $this->y)), getDenom(makeRational($this->a, $this->b))));
+    }
+    public function testAdd()
+    {
+        $this->assertEquals(['num' => 19, 'denom' => 36], add(makeRational($this->x, $this->y), makeRational($this->a, $this->b)));
+    }
+        public function testSub()
+    {
+        $this->assertEquals(['num' => 35, 'denom' => 36], sub(makeRational($this->x, $this->y), makeRational($this->a, $this->b)));
+    }
+    public function testRatToString()
+    {
+        $this->assertEquals('3/4', ratToString(makeRational($this->x, $this->y)));
     }
 }
