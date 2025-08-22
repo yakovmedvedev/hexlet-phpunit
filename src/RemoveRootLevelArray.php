@@ -26,3 +26,12 @@ function removeFirstLevel($array) {
 $tree1 = [[5], 1, [3, 4]];
 $flattenedArray = removeFirstLevel($tree1);
 print_r($flattenedArray); // Output: [5, 3, 4]
+
+// Explanation:
+// First Iteration: The first foreach loop checks each item in the original array. If the item is an array, it recursively merges items from the nested structure into the result.
+
+// Second Iteration: The second foreach loop goes over the original array again. This time, it specifically checks for arrays and collects their values directly into the result, which effectively removes any root-level scalar values.
+
+// Merge Results: The final output contains all elements from nested arrays, excluding the first-level non-array values.
+
+// With the provided input, this code should return the desired output of [5, 3, 4].
