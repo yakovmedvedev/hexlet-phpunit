@@ -1,0 +1,26 @@
+<?php
+
+//https://habr.com/ru/articles/145946/
+
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
+use function Php\Immutable\Fs\Trees\trees\mkdir;
+use function Php\Immutable\Fs\Trees\trees\mkfile;
+
+// mkdir вторым параметром принимает список детей
+// которые могут быть либо директориями созданными mkdir
+// либо файлами созданными mkfile
+$tree = mkdir('etc', [
+  mkfile('bashrc'),
+  mkdir('consul', [
+    mkfile('config.json'),
+  ]),
+], ['key' => 'value']);
+
+print_r($tree);

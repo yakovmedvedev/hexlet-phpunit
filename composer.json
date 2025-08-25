@@ -33,8 +33,15 @@
   "require": {
     "symfony/string": "^7.2",
     "illuminate/collections": "^11.41",
-    "nesbot/carbon": "^3.8"
+    "nesbot/carbon": "^3.8",
+    "hexlet/trees":"dev-main"
   },
+      "repositories":[
+        {
+            "type":"git",
+            "url":"https://github.com/hexlet-components/php-immutable-fs-trees.git"
+        }
+    ],
   "require-dev": {
     "psy/psysh": "@stable",
     "phpstan/phpstan-phpunit": "^2.0",
