@@ -20,14 +20,24 @@ use function Trees\Remove\Level\removeFirstLevel;
 
 class TreesRemoveLevelTest extends TestCase
 {
-    private $x;
-
-    public function setUp(): void
+    public function testEmpty()
     {
-        $this->x = [[5], 1, [3, 4]];
+        $tree = [];
+        $result = [];
+        $this->assertEquals($result, removeFirstLevel($tree));
     }
+
+    public function testFlat()
+    {
+        $tree = [1, 100, 3];
+        $result = [];
+        $this->assertEquals($result, removeFirstLevel($tree));
+    }
+
     public function testRemoveFirstLevel()
     {
-        $this->assertEquals([5, 3, 4], removeFirstLevel($this->x));
+        $tree = [[1, [3, 2]], 2, [3, 5], 2, [130, [1, [550, 10]]]];
+        $result = [1, [3, 2], 3, 5, 130, [1, [550, 10]]];
+        $this->assertEquals($result, removeFirstLevel($tree));
     }
 }

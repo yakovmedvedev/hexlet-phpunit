@@ -12,6 +12,10 @@ if (file_exists($autoloadPath1)) {
 
 use function Php\Immutable\Fs\Trees\trees\mkdir;
 use function Php\Immutable\Fs\Trees\trees\mkfile;
+use function Php\Immutable\Fs\Trees\trees\getName;
+use function Php\Immutable\Fs\Trees\trees\isDirectory;
+use function Php\Immutable\Fs\Trees\trees\isFile;
+use function Php\Immutable\Fs\Trees\trees\map;
 
 // mkdir вторым параметром принимает список детей
 // которые могут быть либо директориями созданными mkdir
