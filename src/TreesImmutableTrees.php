@@ -2,6 +2,8 @@
 
 //https://habr.com/ru/articles/145946/
 
+namespace Trees\Immutable\Trees;
+
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 if (file_exists($autoloadPath1)) {
@@ -27,4 +29,9 @@ $tree = mkdir('etc', [
   ]),
 ], ['key' => 'value']);
 
-print_r($tree);
+$tree2 = mkdir('etc', ['key' => 'value']);
+$tree3 = mkfile('bashrc');
+
+//print_r($tree);
+print_r($tree2);
+print_r($tree3);
