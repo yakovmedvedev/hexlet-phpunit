@@ -22,16 +22,19 @@ use function Php\Immutable\Fs\Trees\trees\map;
 // mkdir вторым параметром принимает список детей
 // которые могут быть либо директориями созданными mkdir
 // либо файлами созданными mkfile
-$tree = mkdir('etc', [
+function makeTree()
+{
+  return mkdir('etc', [
   mkfile('bashrc'),
   mkdir('consul', [
     mkfile('config.json'),
   ]),
 ], ['key' => 'value']);
+}
 
 $tree2 = mkdir('etc', ['key' => 'value']);
 $tree3 = mkfile('bashrc');
 
-//print_r($tree);
+print_r($tree);
 print_r($tree2);
 print_r($tree3);

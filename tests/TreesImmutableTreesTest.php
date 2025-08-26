@@ -16,15 +16,49 @@ use PHPUnit\Framework\TestCase;
 use Hexlet\Phpunit\Functional;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-use function Trees\Immutable\Trees\mkdir;
-use function Trees\Immutable\Trees\mkfile;
+use function Php\Immutable\Fs\Trees\trees\mkdir;
+use function Php\Immutable\Fs\Trees\trees\mkfile;
+use function Trees\Immutable\Trees\makeTree;
 
 class TreesImmutableTreesTest extends TestCase
 {
     public function testMakeDirrectory()
     {
-        $actual = ['name' => 'etc', ['children', ['key' => 'value']], ['meta', ['description']], ['type' => 'directory']];
-        $this->assertEquals($actual, mkdir($tree));
+        $actual = ['name' => 'etc', 'children' => [], 'meta' => [], 'type' => 'directory'];
+        $this->assertEquals($actual, mkdir('etc', [], []));
     }
-
+    public function testMakeFile()
+    {
+        $actual = ['name' => 'bashrc', 'meta' => [], 'type' => 'file'];
+        $this->assertEquals($actual, mkfile('bashrc', []));
+    }
+        public function testMakeTree()
+    {
+        $actual = [
+            'name' => 'etc',
+            'children' =>
+            [
+                [
+                    'name' => 'bashrc',
+                    'meta' => [],
+                    'type' => 'file'
+                ],
+                [
+                    'name' => 'consul',
+                    'children' =>
+                        [
+                            [
+                                'name' => 'config.json',
+                                'meta' => [], 'type' => 'file'
+                            ]
+                        ],
+                    'meta' => [],
+                    'type' => 'directory'
+                ]
+            ],
+            'meta' => ['key' => 'value'],
+            'type' => 'directory'
+        ];
+        $this->assertEquals($actual, makeTree());
+    }
 }
