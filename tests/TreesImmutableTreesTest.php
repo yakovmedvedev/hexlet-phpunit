@@ -24,17 +24,19 @@ class TreesImmutableTreesTest extends TestCase
 {
     public function testMakeDirrectory()
     {
-        $actual = ['name' => 'etc', 'children' => [], 'meta' => [], 'type' => 'directory'];
-        $this->assertEquals($actual, mkdir('etc', [], []));
+        $dirrectory = ['name' => 'etc', 'children' => [], 'meta' => [], 'type' => 'directory'];
+        $actual = mkdir('etc', [], []);
+        $this->assertEquals($actual, $dirrectory);
     }
     public function testMakeFile()
     {
-        $actual = ['name' => 'bashrc', 'meta' => [], 'type' => 'file'];
-        $this->assertEquals($actual, mkfile('bashrc', []));
+        $file = ['name' => 'bashrc', 'meta' => [], 'type' => 'file'];
+        $actual = mkfile('bashrc', []);
+        $this->assertEquals($actual, $file);
     }
         public function testMakeTree()
     {
-        $actual = [
+        $tree = [
             'name' => 'etc',
             'children' =>
             [
@@ -59,6 +61,7 @@ class TreesImmutableTreesTest extends TestCase
             'meta' => ['key' => 'value'],
             'type' => 'directory'
         ];
-        $this->assertEquals($actual, makeTree());
+        $actual = makeTree();
+        $this->assertEquals($actual, $tree);
     }
 }
