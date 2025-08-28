@@ -25,28 +25,51 @@ $tree = mkdir(
         mkdir('presentations')
     ]
 );
-// print_r($tree['children']['name']);
 
 function compressImages($tree)
 {
 $children = getChildren($tree);
-$newChildren = array_map(function ($child) {
+
+$jpgChildren = array_filter($children, fn($child) => isFile($child) && str_ends_with(getName($child), '.jpg') === true);
+
+$optJpgChildren = array_map(function ($child) {
     $name = getName($child);
-    if (isFile($child) && strpos(getName($child), '.jpg') === true) {
+
+    
             foreach ($child as $value) {
             $meta = getMeta($child);
-            $meta['size'] = $meta['size'] / 2;
+            $meta['size'] = (int) $meta['size'] * 0.5;
             }
         return mkfile($name, $meta);
-    }
-    return mkdir($name, getChildren($child), getMeta($child));
     
-}, $children);
+   
+}, $jpgChildren);
 
-return mkdir(getName($tree), $newChildren, getMeta($tree));
+$allChildren = array_replace($children, $optJpgChildren);
+return mkdir(getName($tree), $allChildren, getMeta($tree));
 
+        
 }
 print_r(compressImages($tree));
+
+//tutor's
+// function compressImages($node)
+// {
+//     $children = getChildren($node);
+//     $newChildren = array_map(function ($child) {
+//         $name = getName($child);
+//         if (!isFile($child) || !str_ends_with($name, '.jpg')) {
+//             return $child;
+//         }
+
+//         $meta = getMeta($child);
+//         $meta['size'] /= 2;
+
+//         return mkfile($name, $meta);
+//     }, $children);
+
+//     return mkdir(getName($node), $newChildren, getMeta($node));
+// }
 
 // Реализуйте функцию compressImages(), которая принимает на вход директорию, находит внутри нее картинки и "сжимает" их. Под сжиманием понимается уменьшение свойства size в метаданных в два раза. Функция должна вернуть обновленную директорию со сжатыми картинками и всеми остальными данными, которые были внутри этой директории.
 // Картинками считаются все файлы заканчивающиеся на .jpg.
