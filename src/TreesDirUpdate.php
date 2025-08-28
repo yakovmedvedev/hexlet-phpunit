@@ -1,5 +1,7 @@
 <?php
 
+namespace Trees\Dir\Update;
+
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 if (file_exists($autoloadPath1)) {
@@ -34,15 +36,11 @@ $jpgChildren = array_filter($children, fn($child) => isFile($child) && str_ends_
 
 $optJpgChildren = array_map(function ($child) {
     $name = getName($child);
-
-    
-            foreach ($child as $value) {
-            $meta = getMeta($child);
-            $meta['size'] = (int) $meta['size'] * 0.5;
-            }
-        return mkfile($name, $meta);
-    
-   
+    foreach ($child as $value) {
+        $meta = getMeta($child);
+        $meta['size'] = (int) $meta['size'] * 0.5;
+    }
+    return mkfile($name, $meta);   
 }, $jpgChildren);
 
 $allChildren = array_replace($children, $optJpgChildren);
