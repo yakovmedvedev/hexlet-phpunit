@@ -23,33 +23,34 @@ use function Trees\Dir\Update\compressImages;
 class TreesDirUpdateTest extends TestCase
 
 {
-    public function testCompressImages1()
+    public function testCompressImages()
     {
-        $tree = mkdir('my documents', [
-                    mkdir('documents.jpg'),
-                    mkfile('avatar.jpg', ['size' => 100]),
-                    mkfile('passport.jpg', ['size' => 200]),
-                    mkfile('family.jpg', ['size' => 150]),
-                    mkfile('addresses', ['size' => 125]),
-                    mkdir('presentations')
-            ], [ 'test' => 'haha']);
+        $tree = mkdir('my images', [
+            mkdir('documents.jpg'),
+            mkfile('avatar.jpg', ['size' => 100]),
+            mkfile('passport.jpg', ['size' => 200]),
+            mkfile('family.jpg',  ['size' => 150]),
+            mkfile('addresses',  ['size' => 125]),
+            mkdir('presentations', [], ['stuff' => 'media'])
+        ], ['owner' => 'me']
+);
 
         $newTree = compressImages($tree);
 
-        $expectation = [
-            'name' => 'my documents',
+        $expected = [
+            'name' => 'my images',
             'children' => [
                 ['name' => 'documents.jpg', 'children' => [], 'meta' => [], 'type' => 'directory'],
                 ['name' => 'avatar.jpg', 'meta' => ['size' => 50], 'type' => 'file'],
                 ['name' => 'passport.jpg', 'meta' => ['size' => 100], 'type' => 'file'],
                 ['name' => 'family.jpg', 'meta' => ['size' => 75], 'type' => 'file'],
                 ['name' => 'addresses', 'meta' => ['size' => 125], 'type' => 'file'],
-                ['name' => 'presentations', 'children' => [], 'meta' => [], 'type' => 'directory']
+                ['name' => 'presentations', 'children' => [], 'meta' => ['stuff' => 'media'], 'type' => 'directory']
             ],
-            'meta' => ['test' => 'haha'],
+            'meta' => ['owner' => 'me'],
             'type' => 'directory'
         ];
 
-        $this->assertEquals($expectation, $newTree);
+        $this->assertEquals($expected, $newTree);
     }
 }

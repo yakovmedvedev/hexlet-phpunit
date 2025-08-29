@@ -19,13 +19,13 @@ use function Php\Immutable\Fs\Trees\trees\isDirectory;
 use function Php\Immutable\Fs\Trees\trees\isFile;
 
 $tree = mkdir(
-    'my documents', [
+    'my images', [
         mkfile('avatar.jpg', ['size' => 100]),
         mkfile('passport.jpg', ['size' => 200]),
         mkfile('family.jpg',  ['size' => 150]),
         mkfile('addresses',  ['size' => 125]),
-        mkdir('presentations')
-    ]
+        mkdir('presentations', [], ['stuff' => 'media'])
+    ], ['owner' => 'me']
 );
 
 function compressImages($tree)
