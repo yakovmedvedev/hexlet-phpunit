@@ -28,74 +28,117 @@ $tree = mkdir('/', [
     mkfile('hOsts'),
 ]);
 
-function changeCase($tree)
+        // $tree = mkdir('/', [
+        //   mkdir('eTc', [
+        //     mkdir('NgiNx', [], ['size' => 4000]),
+        //     mkdir('CONSUL', [
+        //       mkfile('config.JSON', ['uid' => 0]),
+        //     ]),
+        //   ]),
+        //   mkfile('hOsts'),
+        // ]);
+
+
+function  downcaseFileNames($tree)
 {
-    $name = getName($tree);
-    $fileName = strtolower($name);
+    $origin = $tree;
+    $name = getName($origin);
+    $newName = strtolower($name);
+    $meta = getMeta($origin);
 
-    if (isFile($tree)) {
-        return (mkfile($fileName));
+    if (isFile($origin)) {
+        return (mkfile($newName, $meta));
     }
+
+    $name = getName($origin);
+    $children = getChildren($origin);
+    $newChildren = array_map(fn($child) => downcaseFileNames($child), $children);
+    $newTree = mkdir(getName($origin), $newChildren, getMeta($origin));
+    return $newTree;
 }
+print_r(downcaseFileNames($tree));
 
-// function downcaseFileNames($tree, $name)
+// tutor's
+// function downcaseFileNames($node)
 // {
-//     $name = getName($tree);
-//     $fileName = strtolower($name);
-    
+//     $name = getName($node);
+//     $meta = getMeta($node);
 
-//     if (isFile($tree)) {
-//         return (mkfile($fileName));
+//     if (isFile($node)) {
+//         $newName = strtolower($name);
+//         return mkfile($newName, $meta);
 //     }
+
+//     $updatedChildren = array_map(fn($child) => downcaseFileNames($child), getChildren($node));
+
+//     return mkdir($name, $updatedChildren, $meta);
 // }
-    $name = getName($tree);
-    $meta = getMeta($tree);
-    $children = getChildren($tree);
-    // print_r($children);
-    $newChildren = array_map(fn($child) => changeCase($child), $children);
+// Реализуйте функцию downcaseFileNames(), которая принимает на вход директорию (объект-дерево) и приводит имена всех файлов в этой и во всех вложенных директориях к нижнему регистру. Результат в виде обработанной директории возвращается наружу. Исходное дерево не изменяется.
 
-    // array_map(fn($child) => downcaseFileNames($child, $fileName), $children);
+// Примеры
+// <?php
 
-    print_r($newChildren);
+// use function Php\Immutable\Fs\Trees\trees\mkdir;
+// use function Php\Immutable\Fs\Trees\trees\mkfile;
+// use function App\downcaseFileNames\downcaseFileNames;
 
-print_r($newTree = mkdir($name, $newChildren, $meta));
-return $newTree;
-
-//     $children = getChildren($tree);
-//     // print_r($children);
-//     $newChildren = array_map(function ($child) use ($fileName) {
-//         return downcaseFileNames($child, $fileName);
-//     }, $children);
-
-//     // array_map(fn($child) => downcaseFileNames($child, $fileName), $children);
-
-//     print_r($newChildren);
-
-// $newTree = mkdir($name, $newChildren, $meta);
-// return $newTree;
-// // print_r($newTree);
-
+// $tree = mkdir('/', [
+//     mkdir('eTc', [
+//         mkdir('NgiNx'),
+//         mkdir('CONSUL', [
+//             mkfile('config.json'),
+//         ]),
+//     ]),
+//     mkfile('hOsts'),
+// ]);
 
 // downcaseFileNames($tree);
+// [
+//      'name' => '/',
+//      'type' => 'directory',
+//      'meta' => [],
+//      'children' => [
+//           [
+//                'name' => 'eTc',
+//                'type' => 'directory',
+//                'meta' => [],
+//                'children' => [
+//                     [
+//                          'name' => 'NgiNx',
+//                          'type' => 'directory',
+//                          'meta' => [],
+//                          'children' => [],
+//                      ],
+//                      [
+//                          'name' => 'CONSUL',
+//                          'type' => 'directory',
+//                          'meta' => [],
+//                          'children' => [
+//                               [
+//                                    'name' => 'config.json',
+//                                    'type' => 'file',
+//                                    'meta' => [],
+//                               ]
+//                          ],
+//                      ],
+//                 ],
+//           ],
+//           [
+//                'name' => 'hosts',
+//                'type' => 'file',
+//                'meta' => [],
+//           ],
+//      ],
+// ]
+// Подсказки
+// Для проверки, является ли узел файлом, используйте функцию isFile(). Эта функция принимает узел и возвращает результат проверки (true или false):
 
-// function compressImages($tree)
-// {
-// $children = getChildren($tree);
+// <?php
 
-// $jpgChildren = array_filter($children, fn($child) => isFile($child) && str_ends_with(getName($child), '.jpg') === true);
+// use function Php\Immutable\Fs\Trees\trees\isFile;
 
-// $optJpgChildren = array_map(function ($child) {
-//     $name = getName($child);
-//     foreach ($child as $value) {
-//         $meta = getMeta($child);
-//         $meta['size'] = (int) $meta['size'] * 0.5;
-//     }
-//     return mkfile($name, $meta);   
-// }, $jpgChildren);
+// echo isFile(file);
+// // => true
 
-// $allChildren = array_replace($children, $optJpgChildren);
-// return mkdir(getName($tree), $allChildren, getMeta($tree));
-
-        
-// }
-// compressImages($tree);
+// echo isFile(directory);
+// // => false
