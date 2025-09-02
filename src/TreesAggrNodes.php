@@ -39,24 +39,47 @@ $tree = mkdir('/', [
 function getHiddenFilesCount($tree)
 {
     $name = getName($tree);
-  if (isFile($tree) && str_starts_with(getChildren($tree)['name'], '.') == true) {
+  if (isFile($tree) && str_starts_with(getName($tree), '.')) {
     // Возвращаем 1, для учета текущего файла
-    return '1';
+    return 1;
   }
 
+  if ($tree['type'] == 'directory') {
+        $children = getChildren($tree);
+
   // Если узел — директория, получаем его детей
-  $children = getChildren($tree);
+  // $children = getChildren($tree);
 //   print_r($children);
   // Самая сложная часть
   // Считаем количество потомков для каждого из детей,
   // вызывая рекурсивно нашу функцию getNodesCount
   $descendantsCount = array_map(fn($child) => getHiddenFilesCount($child), $children);
   // Возвращаем 1 (текущая директория) + общее количество потомков
-  print_r($descendantsCount);
+  // print_r($descendantsCount);
   return array_sum($descendantsCount);
+  }
 }
 
-print_r(getHiddenFilesCount($tree)); // 8
+// Call the function and get the count of hidden files
+$hiddenFileCount = getHiddenFilesCount($tree);
+echo "Hidden files count: $hiddenFileCount\n";
+
+//tutor's
+// function getHiddenFilesCount($node)
+// {
+//     $name = getName($node);
+//     if (isFile($node)) {
+//         return str_starts_with($name, '.') ? 1 : 0;
+//     }
+
+//     $children = getChildren($node);
+
+//     return array_reduce($children, fn($acc, $child) => $acc + getHiddenFilesCount($child));
+// }
+
+
+
+
 // Кода здесь немного, но он довольно хитрый. Есть несколько ключевых моментов:
 
 // Функция проверяет тип узла. Если узел — это файл, тогда из функции возвращается единица
