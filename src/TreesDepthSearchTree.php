@@ -29,12 +29,17 @@ $tree = mkdir('/', [
     mkfile('cat'),
   ]),
 ]);
-print_r($tree);
+// print_r($tree);
 
 function dfs($tree)
 {
   // Распечатываем содержимое узла
-  echo getName($tree) . "\n";
+  $names = [];
+  $names[] = getName($tree);
+  $newNames = implode(" ", $names)."\n";
+  echo $newNames;
+  // print_r($newNames);
+  // echo getName($tree) . "\n";
   // Если это файл, то возвращаем управление
   if (isFile($tree)) {
       return;
@@ -47,6 +52,7 @@ function dfs($tree)
   // Множество рекурсивных вызовов в рамках одного вызова функции
   // называется древовидной рекурсией
   array_map(fn($child) => dfs($child), $children);
+  
 }
 
 dfs($tree);
