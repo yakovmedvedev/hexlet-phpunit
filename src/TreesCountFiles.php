@@ -52,6 +52,7 @@ function getSubdirectoriesInfo($tree)
     $children = getChildren($tree);
     // Нас интересуют только директории
     $filtered = array_filter($children, fn($child) => isDirectory($child));
+    print_r($filtered);
     // Запускаем подсчет для каждой директории
     // При таком подходе некоторые узлы будут обходиться много раз
     $result = array_map(fn($child) => [getName($child), getFilesCount($child)], $filtered);
