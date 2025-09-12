@@ -1,64 +1,25 @@
 <?php
 
-//namespace Trees\Calc\Totalsize\Dirs;
-//
-//$autoloadPath1 = __DIR__ . '/../../../autoload.php';
-//$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
-//if (file_exists($autoloadPath1)) {
-//    require_once $autoloadPath1;
-//} else {
-//    require_once $autoloadPath2;
-//}
+namespace Trees\Calc\Totalsize\Dirs;
+
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath1)) {
+   require_once $autoloadPath1;
+} else {
+   require_once $autoloadPath2;
+}
 
 // Реализуйте функцию du(), которая принимает на вход директорию. Функция возвращает список узлов (директорий и файлов),
 // вложенных в указанную директорию на один уровень, и место, которое они занимают. Размер файла задается в метаданных.
 // Размер директории складывается из сумм всех размеров файлов, находящихся внутри во всех поддиректориях. Сами папки размера не имеют.
 // Пример
 
-//use function Php\Immutable\Fs\Trees\trees\mkdir;
-//use function Php\Immutable\Fs\Trees\trees\mkfile;
-//use function App\du\du;
+// use function Php\Immutable\Fs\Trees\trees\mkdir;
+// use function Php\Immutable\Fs\Trees\trees\mkfile;
+// use function App\du\du;
 
-function makedir(string $name, array $children = [], array $meta = [])
-{
-    return [
-        "name" => $name,
-        "children" => $children,
-        "meta" => $meta,
-        "type" => "directory",
-    ];
-}
 
-/**
- * Make file node
- * @param string $name
- * @param array $meta
- * @return array
- */
-function mkfile(string $name, array $meta = [])
-{
-    return [
-        "name" => $name,
-        "meta" => $meta,
-        "type" => "file",
-    ];
-}
-
-$tree = makedir('/', [
-    makedir('etc', [
-        makedir('apache'),
-        makedir('nginx', [
-            mkfile('nginx.conf', ['size' => 800]),
-        ]),
-        makedir('consul', [
-            mkfile('config.json', ['size' => 1200]),
-            mkfile('data', ['size' => 8200]),
-            mkfile('raft', ['size' => 80]),
-        ]),
-    ]),
-    mkfile('hosts', ['size' => 3500]),
-    mkfile('resolve', ['size' => 1000]),
-]);
 //print_r($tree);
 // du($tree);
 // [
@@ -73,188 +34,91 @@ $tree = makedir('/', [
 // usort
 // Вам может пригодиться функция reduce()
 
-<?php
+use function Php\Immutable\Fs\Trees\trees\isDirectory;
+use function Php\Immutable\Fs\Trees\trees\reduce;
+use function Php\Immutable\Fs\Trees\trees\getName;
+use function Php\Immutable\Fs\Trees\trees\getMeta;
+use function Php\Immutable\Fs\Trees\trees\getChildren;
 
-//namespace Trees\Calc\Totalsize\Dirs;
-//
-//$autoloadPath1 = __DIR__ . '/../../../autoload.php';
-//$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
-//if (file_exists($autoloadPath1)) {
-//    require_once $autoloadPath1;
-//} else {
-//    require_once $autoloadPath2;
-//}
-
-// Реализуйте функцию du(), которая принимает на вход директорию. Функция возвращает список узлов (директорий и файлов),
-// вложенных в указанную директорию на один уровень, и место, которое они занимают. Размер файла задается в метаданных.
-// Размер директории складывается из сумм всех размеров файлов, находящихся внутри во всех поддиректориях. Сами папки размера не имеют.
-// Пример
-
-//use function Php\Immutable\Fs\Trees\trees\mkdir;
-//use function Php\Immutable\Fs\Trees\trees\mkfile;
-//use function App\du\du;
-
-function makedir(string $name, array $children = [], array $meta = [])
-{
-    return [
-        "name" => $name,
-        "children" => $children,
-        "meta" => $meta,
-        "type" => "directory",
-    ];
-}
-
-/**
- * Make file node
- * @param string $name
- * @param array $meta
- * @return array
- */
-function mkfile(string $name, array $meta = [])
-{
-    return [
-        "name" => $name,
-        "meta" => $meta,
-        "type" => "file",
-    ];
-}
-
-$tree = makedir('/', [
-    makedir('etc', [
-        makedir('apache'),
-        makedir('nginx', [
-            mkfile('nginx.conf', ['size' => 800]),
-        ]),
-        makedir('consul', [
-            mkfile('config.json', ['size' => 1200]),
-            mkfile('data', ['size' => 8200]),
-            mkfile('raft', ['size' => 80]),
-        ]),
+$tree = mkdir('/', [
+    mkdir('etc', [
+    mkdir('apache', []),
+    mkdir('nginx', [
+        mkfile('.nginx.conf', ['size' => 800]),
     ]),
-    mkfile('hosts', ['size' => 3500]),
+    mkdir('.consul', [
+        mkfile('.config.json', ['size' => 1200]),
+        mkfile('data', ['size' => 8200]),
+        mkfile('raft', ['size' => 80]),
+    ]),
+    ]),
+    mkfile('.hosts', ['size' => 3500]),
     mkfile('resolve', ['size' => 1000]),
 ]);
-//print_r($tree);
-// du($tree);
-// [
-//     ['etc', 10280],
-//     ['hosts', 3500],
-//     ['resolve', 1000],
-// ]
-// Примечания
-// Обратите внимание на структуру результирующего массива. Каждый элемент — массив с двумя значениями: именем директории и размером файлов внутри.
-// Результат отсортирован по размеру в обратном порядке. То есть сверху самые тяжёлые, внизу самые лёгкие.
-// Подсказки
-// usort
-// Вам может пригодиться функция reduce()
-function getSize($node)
+
+function getDirectoryFileSize($tree): int
 {
-    $size = 0;
-    if (isset($node['type']) && $node['type'] === 'file') {
-        $size = $node['meta']['size'];
-    }
-    return $size;
-}
+    $children = getChildren($tree);
+    $totalSize = 0;
 
-$children = $tree['children'];
-
-function dirSize($children) {
-//    $result = [];
-    
+    // Loop through the children of the directory
     foreach ($children as $node) {
+        // If it's a file, accumulate the size
+        if ($node['type'] === 'file' && isset($node['meta']['size'])) {
+            $totalSize += $node['meta']['size'];
+        }
+        // If it's a directory, recursively call this function
+        elseif (isDirectory($node)) {
+            $totalSize += getDirectoryFileSize($node);
+        }
+    }
 
-        $name = $node['name'];
-        $size = getSize($node);
-        $result[] = [$name, $size];
-        ($node['type'] === 'file') ? $size : 0;
-
-//    $size = [0];
-//    if ($node['type'] == 'directory' && isset ($node['children'])) {
-//        $name = $node['name'];
-//        print_r($name);
-//        $dirSize = array_reduce($node['children'], function($size, $getSize) {
-//            $size += $getSize($node);
-//            return $size;
-//            }, []);
-//        $result = [$name, $dirSize];
-//    }
-//if ($node['type'] == 'file') {
-//
-////    return $result[] = [$name, $size]
-//}
-//$result[] = [$name, $size];
-//        return $result = [$name, $size];
-}return $result;
-
+    return $totalSize;
 }
-print_r(dirSize($children));
+
+function walk($children, &$result)
+{
+    foreach ($children as $node) {
+        if (isset($node['meta']['size'])) {
+            $result[] = [getName($node), $node['meta']['size']];
+
+        }
 
 
-
-//function du($tree)
-//{
-//
-//    $children = $tree['children'];
-//
-//    $getSize = function ($node) use (&$getSize) {
-//        if (isset($node['type']) && $node['type'] === 'file') {
-//            return $node['size'];
-//        }
-//
-//        // If it's a directory, we sum the sizes of all its contents
-//        if (isset($node['children'])) {
-//            return array_reduce($node['children'], function($carry, $child) use ($getSize) {
-//                return $carry + $getSize($child);
-//            }, 0);
-//        }
-//
-//        return 0;
-//    };
-//
-////    foreach ($children as $node) {
-////        if ($node['type'] === 'file') {
-////            $meta = $node['meta'];
-////        }
-////        print_r($meta ['size']);
-////        return $size;
-//    //}
-//
-////    print_r($children);
-////    $file = $children['type'] == 'file' ? $children['meta']['size'] : $children['meta']['name'];
-////    print_r($file);
-//    $filesFiltered = array_filter($children, fn($child) => $child['type'] == 'file');
-//    print_r($filesFiltered);
-//    $dirsFiltered = array_filter($children, fn($child) => $child['type'] == 'directory');
-//    print_r($dirsFiltered);
-////    $dirsSize = array_reduce($dirsFiltered, function($size, $node) {
-////        if ($node['type'] == 'file') {
-////        return $node['size'];}
-////        return $size + $node['size'];
-////    }, []);
-////    print_r($dirsSize);
-//
-//}
-//du($tree);
+//            foreach ($children as $node) {
+        // Only consider directories
+        if (isset($node['children']) && is_array($node['children'])) {
+            // Calculate the size of this directory
+            $totalSize = getDirectoryFileSize($node);
+//                    $result[] = [$node['name'], $totalSize];
+//                    walk($node['children'], $result);
+//            if ($totalSize > 0) {
+//                        // Store the directory name and its size in the result
+                $result[] = [getName($node), $totalSize];
+//                        walk($node['children'], $result);
+//                        break; // Stop after finding the first directory with files
+//            }
+        }
+//                return ($result);
+//            }
 
 
+//            if (isset($node['children']) && is_array($node['children'])) {
+//                walk($node['children'], $result);
+//            }
+    }
+}
 
-// function du($tree)
-// {
+function du($tree)
+{
+    $children = getChildren($tree);
+    $result = [];
+    walk($children, $result);
+    usort($result, function ($a, $b) {
+        return $b[1] <=> $a[1]; // The spaceship operator returns -1, 0, or 1
+    });
+    return $result;
+}
+//print_r($tree['children'][2]);
+du(getChildren($tree)[0]);
 
-//     $children = $tree['children'];
-// //    print_r($children);
-// //    $file = $children['type'] == 'file' ? $children['meta']['size'] : $children['meta']['name'];
-// //    print_r($file);
-//     $filesFiltered = array_filter($children, fn($child) => $child['type'] == 'file');
-//     print_r($filesFiltered);
-//     $dirsFiltered = array_filter($children, fn($child) => $child['type'] == 'directory');
-//     print_r($dirsFiltered);
-//     $dirsSize = array_reduce($dirsFiltered, function($size, $node) {
-//         if ($node['type'] == 'file') {
-//         $size[] += $node['meta']['size'];}
-//         return $size;
-//     }, []);
-//     print_r($dirsSize);
-
-// }
-// du($tree);
