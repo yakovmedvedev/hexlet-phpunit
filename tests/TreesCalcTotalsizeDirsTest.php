@@ -21,7 +21,7 @@ use function Php\Immutable\Fs\Trees\trees\mkfile;
 use function Php\Immutable\Fs\Trees\trees\getChildren;
 use function Trees\Calc\Totalsize\Dirs\du;
 
-class Test extends TestCase
+class TreesCalcTotalsizeDirsTest extends TestCase
 {
     public function testDuTree()
     {

@@ -39,10 +39,12 @@ use function Php\Immutable\Fs\Trees\trees\reduce;
 use function Php\Immutable\Fs\Trees\trees\getName;
 use function Php\Immutable\Fs\Trees\trees\getMeta;
 use function Php\Immutable\Fs\Trees\trees\getChildren;
+use function Php\Immutable\Fs\Trees\trees\mkdir;
+use function Php\Immutable\Fs\Trees\trees\mkfile;
 
 $tree = mkdir('/', [
     mkdir('etc', [
-    mkdir('apache', []),
+    mkdir('apache'),
     mkdir('nginx', [
         mkfile('.nginx.conf', ['size' => 800]),
     ]),
