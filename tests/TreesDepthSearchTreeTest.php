@@ -38,14 +38,14 @@ $tree = mkdir('/', [
 ]);
 
 
-        $expected = '=> /
-=> etc
-=> bashrc
-=> consul.cfg
-=> hexletrc
-=> bin
-=> ls
-=> cat';
+        $expected = "/
+etc
+bashrc
+consul.cfg
+hexletrc
+bin
+ls
+cat";
         $actual = dfs($tree);
         $this->assertEquals($expected, $actual);
     }

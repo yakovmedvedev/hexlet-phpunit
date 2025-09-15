@@ -36,8 +36,10 @@ function dfs($tree)
   // Распечатываем содержимое узла
   $names = [];
   $names[] = getName($tree);
+  // print_r($names);
   $newNames = implode(" ", $names)."\n";
-  echo $newNames;
+  print_r($newNames);
+  
   // print_r($newNames);
   // echo getName($tree) . "\n";
   // Если это файл, то возвращаем управление
@@ -52,7 +54,7 @@ function dfs($tree)
   // Множество рекурсивных вызовов в рамках одного вызова функции
   // называется древовидной рекурсией
   array_map(fn($child) => dfs($child), $children);
-  
+  // return $newNames;
 }
 
 dfs($tree);
