@@ -1,6 +1,6 @@
 <?php
 
-namespace Trees\Path\Nodes;
+namespace Trees\Recurs\Search;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
@@ -34,8 +34,35 @@ $tree = mkdir('/', [
 ]);
 // print_r($tree);
 
+function array_flatten(array $multiDimArray): array {
+    $flatten = [];
 
+    $singleArray = array_map(function($arr) use (&$flatten) {
+        $flatten = array_merge($flatten, $arr);
+    }, $multiDimArray);
 
+    return $flatten;
+}
+
+function findFilesByName($tree, $substr, $currentPath = '')
+{
+  
+  // print_r($children);
+  // $substr = '';
+  $name = getName($tree);
+  $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
+  $children = getChildren($tree);
+  
+  if (strpos($name, $substr) === true) {
+    return [$fullPath];
+  }
+
+  
+  $allFiles = array_filter($children, fn($child) => isFile($child));
+  $matchFiles = array_map(fn($file) => findFilesByName($file, $fullPath),$allFiles);
+  return array_flatten($matchFiles);
+}
+findFilesByName($tree, 'co');
 
 //Реализуйте функцию findFilesByName(), которая принимает на вход файловое дерево и подстроку, а возвращает список файлов, имена которых содержат эту подстроку.
 
