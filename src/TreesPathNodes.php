@@ -1,6 +1,6 @@
 <?php
 
-namespace Trees\Paths\Nodes;
+namespace Trees\Path\Nodes;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
@@ -32,6 +32,7 @@ $tree = mkdir('/', [
   mkdir('logs'),
   mkfile('hosts'),
 ]);
+// print_r($tree);
 
 function array_flatten(array $multiDimArray): array {
     $flatten = [];
@@ -44,25 +45,56 @@ function array_flatten(array $multiDimArray): array {
 }
 
 
-function findEmptyDirsPaths($tree)
+function findEmptyDirsPaths($tree, $currentPath = '')
 {
     $name = getName($tree);
+    $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
     $children = getChildren($tree);
     // print_r($children);
 
     // if (count($children === 0)) {
     //     return [$name];
     // }
-
-    if (empty($children)) {
-               return [$name];
+ 
+        if (empty($children)) {
+               return [$fullPath];
            }
+
 
     $allDirs = array_filter($children, fn($child) => !isFile($child));
     // print_r($allDirs);
-    $emptyDirs = array_map(fn($dir) => findEmptyDirsPaths($dir), $allDirs);
-    print_r(array_flatten($emptyDirs));
+    $emptyDirs = array_map(fn($dir) => findEmptyDirsPaths($dir, $fullPath), $allDirs);
+    // print_r(array_flatten($emptyDirs));
     return array_flatten($emptyDirs);
-    
 }
-findEmptyDirsPaths($tree);
+$emptyDirsPaths = findEmptyDirsPaths($tree);
+print_r($emptyDirsPaths);
+
+//AI's
+// function findEmptyDirsPaths($tree, $currentPath = '') 
+// {
+//     // Get the current directory's name and build the full path
+//     $name = getName($tree);
+//     $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
+//     $children = getChildren($tree);
+
+//     // Check if the current directory is empty
+//     if (empty($children)) {
+//         return [$fullPath]; // Return the full path of the empty directory
+//     }
+
+//     // Get only the directories from the children
+//     $allDirs = array_filter($children, fn($child) => isDirectory($child));
+    
+//     $emptyDirs = [];
+//     foreach ($allDirs as $dir) {
+//         // Recursively check for empty directories
+//         $emptyDirs = array_merge($emptyDirs, findEmptyDirsPaths($dir, $fullPath));
+//     }
+
+//     return $emptyDirs;
+// }
+
+// // Call the function and print the results
+// $emptyDirsPaths = findEmptyDirsPaths($tree);
+// print_r($emptyDirsPaths);
