@@ -55,29 +55,29 @@ function findFilesByName($tree, $substr, $currentPath = '')
   $children = getChildren($tree);
   // print_r($children);
   
-  if (strpos($children[$name], $substr) !== false) {
+  if (str_contains($tree[$children][$name], $substr) !== false) {
     $matches[] = $fullPath;
   }
 
 
-  // if (isDirectory($tree)) {
-  //       $children = getChildren($tree);
-  //       if (is_array($children)) {
-  //         foreach ($children as $child) {
-  //       $matches = array_merge($matches, findFilesByName($child, $substr, $fullPath));
-  //   }
-  // }
+  if (isDirectory($tree)) {
+        $children = getChildren($tree);
+        if (is_array($children)) {
+          foreach ($children as $child) {
+        $matches = array_merge($matches, findFilesByName($child, $substr, $fullPath));
+    }
+  }
 
-  // }
+  }
 
-    // return $matches;
+    return $matches;
 
   
-  $allFiles = array_filter($children, fn($child) => isFile($child));
-  print_r($allFiles);
-  $matchFiles = array_map(fn($file) => findFilesByName($file, $matches), $allFiles);
-  print_r($matchFiles);
-  return array_flatten($matchFiles);
+  // $allFiles = array_filter($children, fn($child) => isFile($child));
+  // print_r($allFiles);
+  // $matchFiles = array_map(fn($file) => findFilesByName($file, $matches), $allFiles);
+  // print_r($matchFiles);
+  // return array_flatten($matchFiles);
 }
 findFilesByName($tree, 'co');
 

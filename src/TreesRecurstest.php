@@ -24,7 +24,7 @@ $tree = mkdir('/', [
     mkdir('nginx', [
       mkfile('nginx.conf'),
     ]),
-    mkdir('cogsul', [
+    mkdir('consul', [
       mkfile('config.json'),
       mkdir('data'),
     ]),
@@ -33,62 +33,63 @@ $tree = mkdir('/', [
   mkfile('hosts'),
 ]);
 
-function array_flatten(array $multiDimArray): array {
-    $flatten = [];
-
-    $singleArray = array_map(function($arr) use (&$flatten) {
-        $flatten = array_merge($flatten, $arr);
-    }, $multiDimArray);
-
-    return $flatten;
+function flatten(array $array) {
+    $return = array();
+    array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+    return $return;
 }
 
-function findFilesByName($tree)
+// function array_flatten(array $multiDimArray): array {
+//     $flatten = [];
+
+//     $singleArray = array_map(function($arr) use (&$flatten) {
+//         $flatten = array_merge($flatten, $arr);
+//     }, $multiDimArray);
+
+//     return $flatten;
+// }
+
+function myReduce($children, callable $findFilesByName, $init = null)
 {
-  
-  // print_r($children);
-  // $substr = '';
-  $children = getChildren($tree);
- 
-
-foreach ($children as $child) {
-  $matches = [];
-  $name = getName($tree);
-  if (isFile($child)) {
-$matches[] = $child[$name];
-  }
-  
-  print_r($matches);
+    $acc = $init;
+    foreach ($children as $child) {
+        $acc = $findFilesByName($acc, $child); // Заменяем старый аккумулятор новым
+    }
+    return $acc;
 }
 
+function findFilesByName($tree, $substr)
+{
+    $children = getChildren($tree);
+    $name = getName($tree);
+    $files = [];
 
+    // // Loop through the children of the directory
+    // foreach ($children as $child) {
+    //     // If it's a file, accumulate the size
+        if (isFile($tree) && strpos($name, $substr) !== false) {
+          return $name;
+        }
+        // $files[] = $name;
+    //     // If it's a directory, recursively call this function
+    //     // elseif (isDirectory($node)) {
+    //     //     $totalSize += getDirectoryFileSize($node);
+    //     // }
+    // }
+//     print_r($files);
+//     // return $files;
+// $children = getChildren($tree);
+// $matched = array_reduce($children, function($acc, $child) {
+//   strpos($name, $substr) !== false ? $name : $acc;
+//   return $acc;
+// }, []);
 
-  // $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
-  
-  // // print_r($children);
-  
-  // if (isFile($tree) && strpos($name, $substr) !== false) {
-  //   $matches[] = $fullPath;
-  // }
-
-
-  // // if (isDirectory($tree)) {
-  // //       $children = getChildren($tree);
-  // //       if (is_array($children)) {
-  // //         foreach ($children as $child) {
-  // //       $matches = array_merge($matches, findFilesByName($child, $substr, $fullPath));
-  // //   }
-  // // }
-
-  // // }
-
-    return $matches;
-
-  
-  // $allFiles = array_filter($children, fn($child) => isFile($child));
+// $file = array_map(fn($child) => findFilesByName($child), $children);
+  // $allFiles = array_filter($children, fn($child) => findFilesByName($child));
   // print_r($allFiles);
+  return flatten($matched);
+}  
   // $matchFiles = array_map(fn($file) => findFilesByName($file, $matches), $allFiles);
   // // print_r($matchFiles);
   // return array_flatten($matchFiles);
-}
-findFilesByName($tree);
+print_r(findFilesByName($tree, 'on'));
