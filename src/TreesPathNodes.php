@@ -48,7 +48,7 @@ function array_flatten(array $multiDimArray): array {
 function findEmptyDirsPaths($tree, $currentPath = '')
 {
     $name = getName($tree);
-    $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
+    $fullPath = $currentPath !== '' && $currentPath !== '/' ? $currentPath . '/' . $name : $name;
     $children = getChildren($tree);
     // print_r($children);
 
