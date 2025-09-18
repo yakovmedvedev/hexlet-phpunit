@@ -39,57 +39,58 @@ function flatten(array $array) {
     return $return;
 }
 
-// function array_flatten(array $multiDimArray): array {
-//     $flatten = [];
-
-//     $singleArray = array_map(function($arr) use (&$flatten) {
-//         $flatten = array_merge($flatten, $arr);
-//     }, $multiDimArray);
-
-//     return $flatten;
-// }
-
-function myReduce($children, callable $findFilesByName, $init = null)
-{
-    $acc = $init;
-    foreach ($children as $child) {
-        $acc = $findFilesByName($acc, $child); // Заменяем старый аккумулятор новым
-    }
-    return $acc;
-}
-
-function findFilesByName($tree, $substr)
-{
-    $children = getChildren($tree);
-    $name = getName($tree);
-    $files = [];
-
-    // // Loop through the children of the directory
-    // foreach ($children as $child) {
-    //     // If it's a file, accumulate the size
-        if (isFile($tree) && strpos($name, $substr) !== false) {
-          return $name;
+// Function to find files by name with full path
+function findFilesByName($tree, $substring) {
+    // Initialize empty array to store matching file paths
+    $result = [];
+    
+    // Helper function to traverse the tree recursively
+    $walk = function ($node, $currentPath = '') use ($substring, &$result, &$walk) {
+        // Get node's name
+        $name = getName($node);
+        // Build current path
+        $path = $currentPath === '' ? $name : "$currentPath/$name";
+            if ($currentPath === '' && $name === '/') {
+            $path = '';
         }
-        // $files[] = $name;
-    //     // If it's a directory, recursively call this function
-    //     // elseif (isDirectory($node)) {
-    //     //     $totalSize += getDirectoryFileSize($node);
-    //     // }
-    // }
-//     print_r($files);
-//     // return $files;
-// $children = getChildren($tree);
-// $matched = array_reduce($children, function($acc, $child) {
-//   strpos($name, $substr) !== false ? $name : $acc;
-//   return $acc;
-// }, []);
-
-// $file = array_map(fn($child) => findFilesByName($child), $children);
-  // $allFiles = array_filter($children, fn($child) => findFilesByName($child));
-  // print_r($allFiles);
-  return flatten($matched);
-}  
-  // $matchFiles = array_map(fn($file) => findFilesByName($file, $matches), $allFiles);
-  // // print_r($matchFiles);
-  // return array_flatten($matchFiles);
+        
+        if (isFile($node)) {
+            // If it's a file and name contains search string, add to results
+            if (stripos($name, $substring) !== false) {
+                $result[] = $path;
+            }
+        } 
+        // else {
+        //     // If it's a directory, recurse through children
+        //     $children = getChildren($node);
+        //     foreach ($children as $child) {
+        //         $walk($child, $path);
+        //     }
+        // }
+    };
+    
+    // Start traversal from root
+    $walk($tree);
+    return $result;
+}
 print_r(findFilesByName($tree, 'on'));
+
+
+// function findFilesByName($tree, $substr, $currentPath = '')
+// {
+//     $matches = [];
+//     $name = getName($tree);
+//     $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
+    
+//     if (isFile($tree) && strpos($name, $substr) !== false) {
+//         $matches[] = $fullPath;
+//     }
+
+//     $children = getChildren($tree);
+
+//     foreach ($children as $child) {
+//         $matches = array_merge($matches, findFilesByName($child, $substr, $fullPath));
+//     }
+
+//     return $matches;
+// }

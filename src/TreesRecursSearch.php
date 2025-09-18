@@ -52,16 +52,16 @@ function findFilesByName($tree, $substr, $currentPath = '')
   $matches = [];
   $name = getName($tree);
   $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
-  $children = getChildren($tree);
+  
   // print_r($children);
   
-  if (str_contains($tree[$children][$name], $substr) !== false) {
+  if (str_contains($name, $substr) !== false) {
     $matches[] = $fullPath;
   }
 
-
-  if (isDirectory($tree)) {
-        $children = getChildren($tree);
+$children = getChildren($node);
+  if (isDirectory($node)) {
+        $children = getChildren($node);
         if (is_array($children)) {
           foreach ($children as $child) {
         $matches = array_merge($matches, findFilesByName($child, $substr, $fullPath));
