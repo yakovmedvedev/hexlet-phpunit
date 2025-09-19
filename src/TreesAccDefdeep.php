@@ -33,51 +33,87 @@ $tree = mkdir('/', [
   mkfile('hosts'),
 ]);
 
-function array_flatten(array $multiDimArray): array {
-    $flatten = [];
-
-    $singleArray = array_map(function($arr) use (&$flatten) {
-        $flatten = array_merge($flatten, $arr);
-    }, $multiDimArray);
-
-    return $flatten;
+// Function to find files by name with full path
+function findFilesByName($tree, $searchString) {
+    // Initialize empty array to store matching file paths
+    $result = [];
+    
+    // Helper function to traverse the tree recursively
+    $traverse = function ($node, $currentPath = '') use ($searchString, &$result, &$traverse) {
+        // Get node's name
+        $name = getName($node);
+        // Build current path
+        $path = $currentPath === '' ? $name : "$currentPath/$name";
+        
+        if (isFile($node)) {
+            // If it's a file and name contains search string, add to results
+            if (stripos($name, $searchString) !== false) {
+                $result[] = $path;
+            }
+        } else {
+            // If it's a directory, recurse through children
+            $children = getChildren($node);
+            foreach ($children as $child) {
+                $traverse($child, $path);
+            }
+        }
+    };
+    
+    // Start traversal from root
+    $traverse($tree);
+    return $result;
 }
 
-function iter($node, $depth)
-{
-    $name = getName($node);
-    $children = getChildren($node);
 
-    // Если детей нет, то добавляем директорию
-    if (count($children) === 0) {
-        return [$name];
-    }
-    // Если это второй уровень вложенности, и директория не пустая,
-    // то не имеет смысла смотреть дальше
-    if ($depth === 3) {
-        // Почему возвращается именно пустой массив?
-        // Потому что снаружи выполняется array_flatten
-        // Он раскрывает пустые массивы
-        return [];
-    }
-    // Оставляем только директории
-    $emptyDirPaths = array_filter($children, fn($child) => isDirectory($child));
-    // Не забываем увеличивать глубину
-    $output = array_map(function ($child) use ($depth) {
-        return iter($child, $depth + 1);
-    }, $emptyDirPaths);
+// Test the function
+$result = findFilesByName($tree, 'co');
+print_r($result);
 
-    // Перед возвратом "выпрямляем" массив
-    return array_flatten($output);
-}
+// function array_flatten(array $multiDimArray): array {
+//     $flatten = [];
 
-function findEmptyPaths($tree)
-{
-    // Начинаем с глубины 0
-    return iter($tree, 0);
-}
+//     $singleArray = array_map(function($arr) use (&$flatten) {
+//         $flatten = array_merge($flatten, $arr);
+//     }, $multiDimArray);
 
-print_r(findEmptyPaths($tree)); // ['apache', 'logs']
+//     return $flatten;
+// }
+
+// function iter($node, $depth)
+// {
+//     $name = getName($node);
+//     $children = getChildren($node);
+
+//     // Если детей нет, то добавляем директорию
+//     if (count($children) === 0) {
+//         return [$name];
+//     }
+//     // Если это второй уровень вложенности, и директория не пустая,
+//     // то не имеет смысла смотреть дальше
+//     if ($depth === 3) {
+//         // Почему возвращается именно пустой массив?
+//         // Потому что снаружи выполняется array_flatten
+//         // Он раскрывает пустые массивы
+//         return [];
+//     }
+//     // Оставляем только директории
+//     $emptyDirPaths = array_filter($children, fn($child) => isDirectory($child));
+//     // Не забываем увеличивать глубину
+//     $output = array_map(function ($child) use ($depth) {
+//         return iter($child, $depth + 1);
+//     }, $emptyDirPaths);
+
+//     // Перед возвратом "выпрямляем" массив
+//     return array_flatten($output);
+// }
+
+// function findEmptyPaths($tree)
+// {
+//     // Начинаем с глубины 0
+//     return iter($tree, 0);
+// }
+
+// print_r(findEmptyPaths($tree)); // ['apache', 'logs']
 
 
 // Аккумулятор—

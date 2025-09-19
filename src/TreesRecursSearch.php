@@ -17,6 +17,8 @@ use function Php\Immutable\Fs\Trees\trees\getName;
 use function Php\Immutable\Fs\Trees\trees\getMeta;
 use function Php\Immutable\Fs\Trees\trees\isDirectory;
 use function Php\Immutable\Fs\Trees\trees\isFile;
+use function Php\Immutable\Fs\Trees\trees\array_flatten;
+
 
 $tree = mkdir('/', [
   mkdir('etc', [
@@ -34,43 +36,110 @@ $tree = mkdir('/', [
 ]);
 // print_r($tree);
 
-function array_flatten(array $multiDimArray): array {
-    $flatten = [];
+// function array_flatten(array $multiDimArray): array {
+//     $flatten = [];
 
-    $singleArray = array_map(function($arr) use (&$flatten) {
-        $flatten = array_merge($flatten, $arr);
-    }, $multiDimArray);
+//     $singleArray = array_map(function($arr) use (&$flatten) {
+//         $flatten = array_merge($flatten, $arr);
+//     }, $multiDimArray);
 
-    return $flatten;
+//     return $flatten;
+// }
+
+function iter($node, $currentPath, $substr)
+{
+    $name = getName($node);
+    $children = getChildren($node);
+    $path = [];
+
+    // Если детей нет, то добавляем директорию
+    if (isFile($node) && stripos($name, $substr)) {
+        return [$name];
+    }
+    // Если это второй уровень вложенности, и директория не пустая,
+    // то не имеет смысла смотреть дальше
+    // $path = $currentPath === '' ? $name : "$currentPath/$name";
+    // if ($currentPath === '' && $name === '/') {
+    //         $path = '';
+    //     }
+
+    $currentPath = ($name === '/') ? '' : "$currentPath/$name";
+    if (isFile($node)) {
+        if (str_contains($name, $substr)) {
+            $path[] = $currentPath;
+        }
+        return $path;
+    }
+    // Оставляем только директории
+    $filesPaths = array_filter($children, fn($child) => isFile($child));
+    // Не забываем увеличивать глубину
+    $name = getName($node);
+    $output = array_reduce($filesPaths, function($newPath, $child) use ($path, $substr) {
+      return iter($child, $substr, $path, $newPath);
+    }, []);
+    // $output = array_map(function ($child) use ($path) {
+    //     return iter($child);
+    // }, $filesPaths);
+
+    // Перед возвратом "выпрямляем" массив
+    return array_flatten($output);
 }
 
-function findFilesByName($tree, $substr, $currentPath = '')
+function findfiles($tree)
 {
-  
-  // print_r($children);
-  // $substr = '';
-  $matches = [];
-  $name = getName($tree);
-  $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
-  
-  // print_r($children);
-  
-  if (str_contains($name, $substr) !== false) {
-    $matches[] = $fullPath;
-  }
+    // Начинаем с глубины 0
+    return iter($tree, $currentPath = '', $substr = 'co');
+}
+print_r(findfiles($tree));
 
-$children = getChildren($node);
-  if (isDirectory($node)) {
-        $children = getChildren($node);
-        if (is_array($children)) {
-          foreach ($children as $child) {
-        $matches = array_merge($matches, findFilesByName($child, $substr, $fullPath));
-    }
-  }
+// function findFiles($tree)
+// {
+//     $name = getName($tree);
+//     $children = getChildren($tree);
+//     $substr = 'og';
 
-  }
+//     // Если детей нет, то добавляем директорию
+//     if ([$children['type']] === 'file' && stripos($name, $substr)) {
+//         return [$name];
+//     }
 
-    return $matches;
+//     // Фильтруем файлы, они нас не интересуют
+//     // $fileNames = array_filter($children, fn($child) => !isDirectory($child));
+//     // print_r($fileNames);
+//     // Ищем пустые директории внутри текущей
+//     $matchedNames = array_map(fn($file) => findFiles($file), $children);
+
+//     // array_flatten выправляет массив, так что он остается плоским
+//     return array_flatten($matchedNames);
+// }
+// print_r(findFiles($tree));
+
+// function findFilesByName($tree, $substr, $currentPath = '')
+// {
+  
+//   // $substr = '';
+//   $matches = [];
+//   $name = getName($tree);
+//   $fullPath = $currentPath !== '' ? $currentPath . '/' . $name : $name;
+//   $children = getChildren($tree);
+//   // print_r($children);
+  
+//   if (str_contains($tree[$children][$name], $substr) !== false) {
+//     $matches[] = $fullPath;
+//   }
+
+
+//   if (isDirectory($tree)) {
+//         $children = getChildren($tree);
+//         if (is_array($children)) {
+//           foreach ($children as $child) {
+//         $matches = array_merge($matches, findFilesByName($child, $substr, $fullPath));
+//     }
+//   }
+
+//   }
+
+//     return $matches;
 
   
   // $allFiles = array_filter($children, fn($child) => isFile($child));
@@ -78,8 +147,8 @@ $children = getChildren($node);
   // $matchFiles = array_map(fn($file) => findFilesByName($file, $matches), $allFiles);
   // print_r($matchFiles);
   // return array_flatten($matchFiles);
-}
-findFilesByName($tree, 'co');
+// }
+//findFilesByName($tree, 'co');
 
 //Реализуйте функцию findFilesByName(), которая принимает на вход файловое дерево и подстроку, а возвращает список файлов, имена которых содержат эту подстроку.
 
@@ -447,4 +516,3 @@ findFilesByName($tree, 'co');
 
 // Final Notes
 // Running code with library dependencies can sometimes lead to unexpected behavior if specific implementations have subtle differences. Double-check both the library's documentation and error output to ensure that there isn't another underlying issue. If the issue persists, please share any specific stack traces or additional details — this will help diagnose the problem more effectively!
-
