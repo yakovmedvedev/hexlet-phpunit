@@ -65,3 +65,27 @@ function findFilesByName($root, $subStr)
 }
 print_r(findFilesByName($tree, 'co'));
 // END
+
+// BEGIN (write your solution here)
+// function findFilesByName($tree, $string)
+// {
+//     $name = getName($tree);
+//     $currentPath = ($name === '/') ? null : $name;
+
+//     if (isFile($tree)) {
+//         if (str_contains($currentPath, $string)) {
+//             return [$currentPath];
+//         }
+//         return [];
+//     }
+//     $children = getChildren($tree);
+//     if (count($children) === 0) {
+//         return [];
+//     }
+//     $searchedFiles = array_reduce($children, function ($acc, $child) use ($string) {
+//         return array_merge($acc, findFilesByName($child, $string));
+//     }, []);
+
+//     return array_map(fn($pathToFile) => "{$currentPath}/{$pathToFile}", $searchedFiles);
+// }
+// END
