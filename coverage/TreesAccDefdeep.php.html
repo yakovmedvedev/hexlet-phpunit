@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Code Coverage for /home/yam/hexlet-phpunit/src/TreesAccDefdeep.php</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=11.0.8" rel="stylesheet" type="text/css">
+  <link href="_css/octicons.css?v=11.0.8" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=11.0.8" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/home/yam/hexlet-phpunit/src</a></li>
+         <li class="breadcrumb-item active">TreesAccDefdeep.php</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="table-responsive">
+    <table class="table table-bordered">
+     <thead>
+      <tr>
+       <td>&nbsp;</td>
+       <td colspan="10"><div align="center"><strong>Code Coverage</strong></div></td>
+      </tr>
+      <tr>
+       <td>&nbsp;</td>
+       <td colspan="3"><div align="center"><strong>Lines</strong></div></td>
+       <td colspan="4"><div align="center"><strong>Functions and Methods</strong></div></td>
+       <td colspan="3"><div align="center"><strong>Classes and Traits</strong></div></td>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td class="danger">Total</td>
+       <td class="danger big">       <div class="progress">
+         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
+           <span class="visually-hidden">0.00% covered (danger)</span>
+         </div>
+       </div>
+</td>
+       <td class="danger small"><div align="right">0.00%</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;34</div></td>
+       <td class="danger big">       <div class="progress">
+         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
+           <span class="visually-hidden">0.00% covered (danger)</span>
+         </div>
+       </div>
+</td>
+       <td class="danger small"><div align="right">0.00%</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;1</div></td>
+       <td class="danger small"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></td>
+       <td class=" big"></td>
+       <td class=" small"><div align="right">n/a</div></td>
+       <td class=" small"><div align="right">0&nbsp;/&nbsp;0</div></td>
+      </tr>
+
+      <tr>
+       <td class="danger"><a href="#37"><abbr title="findFilesByName($tree, $searchString)">Trees\Acc\Defdeep\findFilesByName</abbr></a></td>
+       <td class="danger big">       <div class="progress">
+         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
+           <span class="visually-hidden">0.00% covered (danger)</span>
+         </div>
+       </div>
+</td>
+       <td class="danger small"><div align="right">0.00%</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;13</div></td>
+       <td class="danger big">       <div class="progress">
+         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0.00" aria-valuemin="0" aria-valuemax="100" style="width: 0.00%">
+           <span class="visually-hidden">0.00% covered (danger)</span>
+         </div>
+       </div>
+</td>
+       <td class="danger small"><div align="right">0.00%</div></td>
+       <td class="danger small"><div align="right">0&nbsp;/&nbsp;1</div></td>
+       <td class="danger small">30</td>
+       <td class="danger" colspan="3"></td>
+      </tr>
+
+
+     </tbody>
+    </table>
+   </div>
+<table id="code" class="table table-borderless table-condensed">
+<tbody>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="1" href="#1">1</a></td><td class="col-11 codeLine"><span class="default">&lt;?php</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="2" href="#2">2</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="3" href="#3">3</a></td><td class="col-11 codeLine"><span class="keyword">namespace</span><span class="default">&nbsp;</span><span class="default">Trees\Acc\Defdeep</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="4" href="#4">4</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="5" href="#5">5</a></td><td class="col-11 codeLine"><span class="default">$autoloadPath1</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">__DIR__</span><span class="default">&nbsp;</span><span class="keyword">.</span><span class="default">&nbsp;</span><span class="default">'/../../../autoload.php'</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="6" href="#6">6</a></td><td class="col-11 codeLine"><span class="default">$autoloadPath2</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">__DIR__</span><span class="default">&nbsp;</span><span class="keyword">.</span><span class="default">&nbsp;</span><span class="default">'/../vendor/autoload.php'</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="7" href="#7">7</a></td><td class="col-11 codeLine"><span class="keyword">if</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="default">file_exists</span><span class="keyword">(</span><span class="default">$autoloadPath1</span><span class="keyword">)</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="8" href="#8">8</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">require_once</span><span class="default">&nbsp;</span><span class="default">$autoloadPath1</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="9" href="#9">9</a></td><td class="col-11 codeLine"><span class="keyword">}</span><span class="default">&nbsp;</span><span class="keyword">else</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="10" href="#10">10</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">require_once</span><span class="default">&nbsp;</span><span class="default">$autoloadPath2</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="11" href="#11">11</a></td><td class="col-11 codeLine"><span class="keyword">}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="12" href="#12">12</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="13" href="#13">13</a></td><td class="col-11 codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">Php\Immutable\Fs\Trees\trees\mkdir</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="14" href="#14">14</a></td><td class="col-11 codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">Php\Immutable\Fs\Trees\trees\mkfile</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="15" href="#15">15</a></td><td class="col-11 codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">Php\Immutable\Fs\Trees\trees\getChildren</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="16" href="#16">16</a></td><td class="col-11 codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">Php\Immutable\Fs\Trees\trees\getName</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="17" href="#17">17</a></td><td class="col-11 codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">Php\Immutable\Fs\Trees\trees\getMeta</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="18" href="#18">18</a></td><td class="col-11 codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">Php\Immutable\Fs\Trees\trees\isDirectory</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="19" href="#19">19</a></td><td class="col-11 codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">Php\Immutable\Fs\Trees\trees\isFile</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="20" href="#20">20</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="21" href="#21">21</a></td><td class="col-11 codeLine"><span class="default">$tree</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">mkdir</span><span class="keyword">(</span><span class="default">'/'</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="keyword">[</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="22" href="#22">22</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;</span><span class="default">mkdir</span><span class="keyword">(</span><span class="default">'etca'</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="keyword">[</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="23" href="#23">23</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">mkdir</span><span class="keyword">(</span><span class="default">'apache'</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="24" href="#24">24</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">mkdir</span><span class="keyword">(</span><span class="default">'nginx'</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="keyword">[</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="25" href="#25">25</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">mkfile</span><span class="keyword">(</span><span class="default">'nginx.conf'</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="26" href="#26">26</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="27" href="#27">27</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">mkdir</span><span class="keyword">(</span><span class="default">'consul'</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="keyword">[</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="28" href="#28">28</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">mkfile</span><span class="keyword">(</span><span class="default">'config.json'</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="29" href="#29">29</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">mkdir</span><span class="keyword">(</span><span class="default">'data'</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="30" href="#30">30</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="31" href="#31">31</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;</span><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="32" href="#32">32</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;</span><span class="default">mkdir</span><span class="keyword">(</span><span class="default">'logs'</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="33" href="#33">33</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;</span><span class="default">mkfile</span><span class="keyword">(</span><span class="default">'hosts'</span><span class="keyword">)</span><span class="keyword">,</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="34" href="#34">34</a></td><td class="col-11 codeLine"><span class="keyword">]</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="35" href="#35">35</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="36" href="#36">36</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Function&nbsp;to&nbsp;find&nbsp;files&nbsp;by&nbsp;name&nbsp;with&nbsp;full&nbsp;path</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="37" href="#37">37</a></td><td class="col-11 codeLine"><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">findFilesByName</span><span class="keyword">(</span><span class="default">$tree</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">$searchString</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="38" href="#38">38</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;Initialize&nbsp;empty&nbsp;array&nbsp;to&nbsp;store&nbsp;matching&nbsp;file&nbsp;paths</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="39" href="#39">39</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$result</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">[</span><span class="keyword">]</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="40" href="#40">40</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="41" href="#41">41</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;Helper&nbsp;function&nbsp;to&nbsp;traverse&nbsp;the&nbsp;tree&nbsp;recursively</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="42" href="#42">42</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$traverse</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="default">$node</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">$currentPath</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">''</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">use</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="default">$searchString</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">&amp;</span><span class="default">$result</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">&amp;</span><span class="default">$traverse</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="43" href="#43">43</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;Get&nbsp;node's&nbsp;name</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="44" href="#44">44</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$name</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">getName</span><span class="keyword">(</span><span class="default">$node</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="45" href="#45">45</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;Build&nbsp;current&nbsp;path</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="46" href="#46">46</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$path</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$currentPath</span><span class="default">&nbsp;</span><span class="default">===</span><span class="default">&nbsp;</span><span class="default">''</span><span class="default">&nbsp;</span><span class="keyword">?</span><span class="default">&nbsp;</span><span class="default">$name</span><span class="default">&nbsp;</span><span class="keyword">:</span><span class="default">&nbsp;</span><span class="string">&quot;</span><span class="string">$currentPath</span><span class="string">/</span><span class="string">$name</span><span class="string">&quot;</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="47" href="#47">47</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="48" href="#48">48</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="default">isFile</span><span class="keyword">(</span><span class="default">$node</span><span class="keyword">)</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="49" href="#49">49</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;If&nbsp;it's&nbsp;a&nbsp;file&nbsp;and&nbsp;name&nbsp;contains&nbsp;search&nbsp;string,&nbsp;add&nbsp;to&nbsp;results</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="50" href="#50">50</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">if</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="default">stripos</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">$searchString</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="default">!==</span><span class="default">&nbsp;</span><span class="default">false</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="51" href="#51">51</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$result</span><span class="keyword">[</span><span class="keyword">]</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">$path</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="52" href="#52">52</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="53" href="#53">53</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span><span class="default">&nbsp;</span><span class="keyword">else</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="54" href="#54">54</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;If&nbsp;it's&nbsp;a&nbsp;directory,&nbsp;recurse&nbsp;through&nbsp;children</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="55" href="#55">55</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$children</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">getChildren</span><span class="keyword">(</span><span class="default">$node</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="56" href="#56">56</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">foreach</span><span class="default">&nbsp;</span><span class="keyword">(</span><span class="default">$children</span><span class="default">&nbsp;</span><span class="keyword">as</span><span class="default">&nbsp;</span><span class="default">$child</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">{</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="57" href="#57">57</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$traverse</span><span class="keyword">(</span><span class="default">$child</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">$path</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="58" href="#58">58</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="59" href="#59">59</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="60" href="#60">60</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="61" href="#61">61</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="62" href="#62">62</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;Start&nbsp;traversal&nbsp;from&nbsp;root</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="63" href="#63">63</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">$traverse</span><span class="keyword">(</span><span class="default">$tree</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="64" href="#64">64</a></td><td class="col-11 codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">$result</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="65" href="#65">65</a></td><td class="col-11 codeLine"><span class="keyword">}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="66" href="#66">66</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="67" href="#67">67</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="68" href="#68">68</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Test&nbsp;the&nbsp;function</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="69" href="#69">69</a></td><td class="col-11 codeLine"><span class="default">$result</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">findFilesByName</span><span class="keyword">(</span><span class="default">$tree</span><span class="keyword">,</span><span class="default">&nbsp;</span><span class="default">'co'</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class="danger d-flex"><td  class="col-1 text-end"><a id="70" href="#70">70</a></td><td class="col-11 codeLine"><span class="default">print_r</span><span class="keyword">(</span><span class="default">$result</span><span class="keyword">)</span><span class="keyword">;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="71" href="#71">71</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="72" href="#72">72</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;function&nbsp;array_flatten(array&nbsp;$multiDimArray):&nbsp;array&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="73" href="#73">73</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$flatten&nbsp;=&nbsp;[];</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="74" href="#74">74</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="75" href="#75">75</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$singleArray&nbsp;=&nbsp;array_map(function($arr)&nbsp;use&nbsp;(&amp;$flatten)&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="76" href="#76">76</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$flatten&nbsp;=&nbsp;array_merge($flatten,&nbsp;$arr);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="77" href="#77">77</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;$multiDimArray);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="78" href="#78">78</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="79" href="#79">79</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$flatten;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="80" href="#80">80</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="81" href="#81">81</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="82" href="#82">82</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;function&nbsp;iter($node,&nbsp;$depth)</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="83" href="#83">83</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="84" href="#84">84</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$name&nbsp;=&nbsp;getName($node);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="85" href="#85">85</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$children&nbsp;=&nbsp;getChildren($node);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="86" href="#86">86</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="87" href="#87">87</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Если&nbsp;детей&nbsp;нет,&nbsp;то&nbsp;добавляем&nbsp;директорию</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="88" href="#88">88</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(count($children)&nbsp;===&nbsp;0)&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="89" href="#89">89</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[$name];</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="90" href="#90">90</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="91" href="#91">91</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Если&nbsp;это&nbsp;второй&nbsp;уровень&nbsp;вложенности,&nbsp;и&nbsp;директория&nbsp;не&nbsp;пустая,</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="92" href="#92">92</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;то&nbsp;не&nbsp;имеет&nbsp;смысла&nbsp;смотреть&nbsp;дальше</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="93" href="#93">93</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($depth&nbsp;===&nbsp;3)&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="94" href="#94">94</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Почему&nbsp;возвращается&nbsp;именно&nbsp;пустой&nbsp;массив?</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="95" href="#95">95</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Потому&nbsp;что&nbsp;снаружи&nbsp;выполняется&nbsp;array_flatten</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="96" href="#96">96</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Он&nbsp;раскрывает&nbsp;пустые&nbsp;массивы</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="97" href="#97">97</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[];</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="98" href="#98">98</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="99" href="#99">99</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Оставляем&nbsp;только&nbsp;директории</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="100" href="#100">100</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$emptyDirPaths&nbsp;=&nbsp;array_filter($children,&nbsp;fn($child)&nbsp;=&gt;&nbsp;isDirectory($child));</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="101" href="#101">101</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Не&nbsp;забываем&nbsp;увеличивать&nbsp;глубину</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="102" href="#102">102</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;=&nbsp;array_map(function&nbsp;($child)&nbsp;use&nbsp;($depth)&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="103" href="#103">103</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;iter($child,&nbsp;$depth&nbsp;+&nbsp;1);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="104" href="#104">104</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;$emptyDirPaths);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="105" href="#105">105</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="106" href="#106">106</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Перед&nbsp;возвратом&nbsp;&quot;выпрямляем&quot;&nbsp;массив</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="107" href="#107">107</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array_flatten($output);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="108" href="#108">108</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="109" href="#109">109</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="110" href="#110">110</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;function&nbsp;findEmptyPaths($tree)</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="111" href="#111">111</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="112" href="#112">112</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Начинаем&nbsp;с&nbsp;глубины&nbsp;0</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="113" href="#113">113</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;iter($tree,&nbsp;0);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="114" href="#114">114</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="115" href="#115">115</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="116" href="#116">116</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;print_r(findEmptyPaths($tree));&nbsp;//&nbsp;['apache',&nbsp;'logs']</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="117" href="#117">117</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="118" href="#118">118</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="119" href="#119">119</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Аккумулятор—</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="120" href="#120">120</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;PHP:&nbsp;Деревья</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="121" href="#121">121</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;В&nbsp;некоторых&nbsp;ситуациях,&nbsp;во&nbsp;время&nbsp;обхода&nbsp;дерева,&nbsp;нужна&nbsp;дополнительная&nbsp;информация,&nbsp;которая&nbsp;зависит&nbsp;от&nbsp;расположения&nbsp;узла.&nbsp;Ее&nbsp;невозможно&nbsp;получить&nbsp;из&nbsp;описания&nbsp;самого&nbsp;узла,&nbsp;так&nbsp;как&nbsp;узел&nbsp;ее&nbsp;не&nbsp;содержит.&nbsp;Эту&nbsp;информацию&nbsp;нужно&nbsp;собирать&nbsp;прямо&nbsp;во&nbsp;время&nbsp;обхода.</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="122" href="#122">122</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="123" href="#123">123</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;К&nbsp;такой&nbsp;информации,&nbsp;например,&nbsp;относится&nbsp;полный&nbsp;путь&nbsp;до&nbsp;файла&nbsp;или&nbsp;глубина&nbsp;текущего&nbsp;узла.&nbsp;Конкретный&nbsp;узел&nbsp;не&nbsp;знает&nbsp;о&nbsp;том,&nbsp;где&nbsp;он&nbsp;находится.&nbsp;Расположение&nbsp;файла&nbsp;в&nbsp;файловой&nbsp;структуре&nbsp;определяется&nbsp;узлами,&nbsp;которые&nbsp;ведут&nbsp;к&nbsp;конкретному&nbsp;файлу.</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="124" href="#124">124</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="125" href="#125">125</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;В&nbsp;этом&nbsp;уроке&nbsp;мы&nbsp;познакомимся&nbsp;с&nbsp;понятием&nbsp;аккумулятор,&nbsp;специальным&nbsp;параметром,&nbsp;который&nbsp;собирает&nbsp;нужные&nbsp;данные&nbsp;во&nbsp;время&nbsp;обхода&nbsp;дерева.&nbsp;Его&nbsp;введение&nbsp;усложняет&nbsp;код,&nbsp;но&nbsp;без&nbsp;него&nbsp;подобные&nbsp;задачи&nbsp;выполнить&nbsp;невозможно.</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="126" href="#126">126</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="127" href="#127">127</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Возьмем&nbsp;для&nbsp;примера&nbsp;такую&nbsp;задачу:&nbsp;найдем&nbsp;все&nbsp;пустые&nbsp;директории&nbsp;в&nbsp;нашей&nbsp;файловой&nbsp;системе.&nbsp;Сначала&nbsp;реализуем&nbsp;простую&nbsp;версию,&nbsp;затем&nbsp;усложним&nbsp;ее&nbsp;и&nbsp;внедрим&nbsp;аккумулятор.&nbsp;Пример&nbsp;файловой&nbsp;системы&nbsp;ниже:</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="128" href="#128">128</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="129" href="#129">129</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&lt;?php</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="130" href="#130">130</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="131" href="#131">131</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;use&nbsp;function&nbsp;Php\Immutable\Fs\Trees\trees\mkdir;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="132" href="#132">132</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;use&nbsp;function&nbsp;Php\Immutable\Fs\Trees\trees\mkfile;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="133" href="#133">133</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="134" href="#134">134</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;$tree&nbsp;=&nbsp;mkdir('/',&nbsp;[</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="135" href="#135">135</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;mkdir('etc',&nbsp;[</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="136" href="#136">136</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir('apache'),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="137" href="#137">137</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir('nginx',&nbsp;[</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="138" href="#138">138</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkfile('nginx.conf'),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="139" href="#139">139</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="140" href="#140">140</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir('consul',&nbsp;[</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="141" href="#141">141</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkfile('config.json'),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="142" href="#142">142</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir('data'),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="143" href="#143">143</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="144" href="#144">144</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;]),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="145" href="#145">145</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;mkdir('logs'),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="146" href="#146">146</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;mkfile('hosts'),</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="147" href="#147">147</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;]);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="148" href="#148">148</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;В&nbsp;этой&nbsp;структуре&nbsp;три&nbsp;пустых&nbsp;директории:&nbsp;/logs,&nbsp;/etc/apache&nbsp;и&nbsp;/etc/consul/data.&nbsp;Код,&nbsp;решающий&nbsp;эту&nbsp;задачу,&nbsp;выглядит&nbsp;так:</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="149" href="#149">149</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="150" href="#150">150</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&lt;?php</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="151" href="#151">151</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="152" href="#152">152</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;function&nbsp;findEmptyDirPaths($tree)</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="153" href="#153">153</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="154" href="#154">154</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$name&nbsp;=&nbsp;getName($tree);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="155" href="#155">155</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$children&nbsp;=&nbsp;getChildren($tree);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="156" href="#156">156</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="157" href="#157">157</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Если&nbsp;детей&nbsp;нет,&nbsp;то&nbsp;добавляем&nbsp;директорию</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="158" href="#158">158</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(count($children)&nbsp;===&nbsp;0)&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="159" href="#159">159</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[$name];</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="160" href="#160">160</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="161" href="#161">161</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="162" href="#162">162</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Фильтруем&nbsp;файлы,&nbsp;они&nbsp;нас&nbsp;не&nbsp;интересуют</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="163" href="#163">163</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$dirNames&nbsp;=&nbsp;array_filter($children,&nbsp;fn($child)&nbsp;=&gt;&nbsp;!isFile($child));</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="164" href="#164">164</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Ищем&nbsp;пустые&nbsp;директории&nbsp;внутри&nbsp;текущей</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="165" href="#165">165</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$emptyDirNames&nbsp;=&nbsp;array_map(fn($dir)&nbsp;=&gt;&nbsp;findEmptyDirPaths($dir),&nbsp;$dirNames);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="166" href="#166">166</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="167" href="#167">167</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;array_flatten&nbsp;выправляет&nbsp;массив,&nbsp;так&nbsp;что&nbsp;он&nbsp;остается&nbsp;плоским</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="168" href="#168">168</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array_flatten($emptyDirNames);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="169" href="#169">169</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="170" href="#170">170</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="171" href="#171">171</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;//&nbsp;В&nbsp;выводе&nbsp;указана&nbsp;только&nbsp;конечная&nbsp;директория</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="172" href="#172">172</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;//&nbsp;Подумайте,&nbsp;как&nbsp;надо&nbsp;изменить&nbsp;функцию,&nbsp;чтобы&nbsp;видеть&nbsp;полный&nbsp;путь</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="173" href="#173">173</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;findEmptyDirPaths($tree);&nbsp;//&nbsp;['apache',&nbsp;'data',&nbsp;'logs']</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="174" href="#174">174</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Самое&nbsp;необычное&nbsp;в&nbsp;этой&nbsp;реализации&nbsp;—&nbsp;функция&nbsp;из&nbsp;нашей&nbsp;библиотеки&nbsp;array_flatten.&nbsp;Зачем&nbsp;она&nbsp;нужна?&nbsp;Если&nbsp;оставить&nbsp;только&nbsp;array_map,&nbsp;то&nbsp;результат&nbsp;может&nbsp;удивить:</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="175" href="#175">175</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="176" href="#176">176</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&lt;?php</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="177" href="#177">177</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="178" href="#178">178</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;findEmptyDirPaths($tree);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="179" href="#179">179</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;//&nbsp;[&nbsp;[&nbsp;[&nbsp;'apache'&nbsp;],&nbsp;[],&nbsp;[&nbsp;[Array]&nbsp;]&nbsp;],&nbsp;[&nbsp;'logs'&nbsp;]&nbsp;]</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="180" href="#180">180</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Такое&nbsp;происходит&nbsp;из-за&nbsp;возврата&nbsp;массива&nbsp;на&nbsp;каждом&nbsp;уровне&nbsp;вложенности.&nbsp;На&nbsp;выходе&nbsp;получается&nbsp;массив&nbsp;массивов,&nbsp;напоминающий&nbsp;по&nbsp;структуре&nbsp;исходное&nbsp;файловое&nbsp;дерево.&nbsp;Чтобы&nbsp;этого&nbsp;не&nbsp;происходило,&nbsp;нужно&nbsp;выправлять&nbsp;код&nbsp;с&nbsp;помощью&nbsp;array_flatten.</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="181" href="#181">181</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="182" href="#182">182</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Попробуем&nbsp;усложнить&nbsp;задачу.&nbsp;Найдем&nbsp;все&nbsp;пустые&nbsp;директории,&nbsp;но&nbsp;с&nbsp;максимальной&nbsp;глубиной&nbsp;поиска&nbsp;2&nbsp;уровня.&nbsp;То&nbsp;есть&nbsp;директории&nbsp;/logs&nbsp;и&nbsp;/etc/apache&nbsp;подходят&nbsp;под&nbsp;это&nbsp;условие,&nbsp;а&nbsp;вот&nbsp;/etc/consul/data&nbsp;—&nbsp;нет.</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="183" href="#183">183</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="184" href="#184">184</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Для&nbsp;начала&nbsp;нужно&nbsp;понять&nbsp;откуда&nbsp;брать&nbsp;глубину.&nbsp;В&nbsp;деревьях&nbsp;глубина&nbsp;считается&nbsp;как&nbsp;количество&nbsp;ребер&nbsp;от&nbsp;корня&nbsp;до&nbsp;нужного&nbsp;узла.&nbsp;Визуально&nbsp;ее&nbsp;посчитать&nbsp;легко,&nbsp;а&nbsp;что&nbsp;насчет&nbsp;кода?&nbsp;Глубину&nbsp;конкретного&nbsp;узла&nbsp;можно&nbsp;представить&nbsp;как&nbsp;глубину&nbsp;предыдущего&nbsp;узла&nbsp;плюс&nbsp;единица.</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="185" href="#185">185</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="186" href="#186">186</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Следующий&nbsp;шаг&nbsp;–&nbsp;добавить&nbsp;переменную,&nbsp;которая&nbsp;передается&nbsp;при&nbsp;каждом&nbsp;рекурсивном&nbsp;вызове&nbsp;(проваливающимся&nbsp;в&nbsp;директорию).&nbsp;Эта&nbsp;переменная,&nbsp;в&nbsp;случае&nbsp;нашей&nbsp;задачи,&nbsp;содержит&nbsp;внутри&nbsp;себя&nbsp;текущую&nbsp;глубину.&nbsp;То&nbsp;есть&nbsp;на&nbsp;каждом&nbsp;уровне&nbsp;(внутри&nbsp;каждой&nbsp;директории)&nbsp;к&nbsp;ней&nbsp;добавляется&nbsp;единица.&nbsp;Такую&nbsp;переменную&nbsp;называют&nbsp;аккумулятором,&nbsp;так&nbsp;как&nbsp;она&nbsp;аккумулирует,&nbsp;то&nbsp;есть&nbsp;накапливает&nbsp;данные.</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="187" href="#187">187</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="188" href="#188">188</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Единственная&nbsp;проблема&nbsp;заключается&nbsp;в&nbsp;том,&nbsp;что&nbsp;у&nbsp;исходной&nbsp;функции&nbsp;findEmptyDirPaths&nbsp;ровно&nbsp;один&nbsp;параметр&nbsp;–&nbsp;узел.&nbsp;С&nbsp;его&nbsp;помощью&nbsp;невозможно&nbsp;передавать&nbsp;глубину&nbsp;всем&nbsp;вложенным&nbsp;директориям&nbsp;и&nbsp;файлам.&nbsp;Поэтому&nbsp;придется&nbsp;ввести&nbsp;внутреннюю&nbsp;функцию,&nbsp;которая&nbsp;сможет&nbsp;&quot;пробрасывать&quot;&nbsp;аккумулятор&nbsp;дальше&nbsp;по&nbsp;дереву:</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="189" href="#189">189</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="190" href="#190">190</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&lt;?php</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="191" href="#191">191</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="192" href="#192">192</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;use&nbsp;Php\Immutable\Fs\Trees\trees\isDirectory;</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="193" href="#193">193</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="194" href="#194">194</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;//&nbsp;Функция&nbsp;iter&nbsp;используется&nbsp;внутри&nbsp;основной&nbsp;и&nbsp;может&nbsp;передавать&nbsp;аккумулятор</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="195" href="#195">195</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;//&nbsp;В&nbsp;качестве&nbsp;аккумулятора&nbsp;выступает&nbsp;переменная&nbsp;$depth,&nbsp;содержащая&nbsp;текущую&nbsp;глубину</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="196" href="#196">196</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;function&nbsp;iter($node,&nbsp;$depth)</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="197" href="#197">197</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="198" href="#198">198</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$name&nbsp;=&nbsp;getName($node);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="199" href="#199">199</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$children&nbsp;=&nbsp;getChildren($node);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="200" href="#200">200</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="201" href="#201">201</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Если&nbsp;детей&nbsp;нет,&nbsp;то&nbsp;добавляем&nbsp;директорию</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="202" href="#202">202</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(count($children)&nbsp;===&nbsp;0)&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="203" href="#203">203</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[$name];</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="204" href="#204">204</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="205" href="#205">205</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Если&nbsp;это&nbsp;второй&nbsp;уровень&nbsp;вложенности,&nbsp;и&nbsp;директория&nbsp;не&nbsp;пустая,</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="206" href="#206">206</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;то&nbsp;не&nbsp;имеет&nbsp;смысла&nbsp;смотреть&nbsp;дальше</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="207" href="#207">207</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;($depth&nbsp;===&nbsp;2)&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="208" href="#208">208</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Почему&nbsp;возвращается&nbsp;именно&nbsp;пустой&nbsp;массив?</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="209" href="#209">209</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Потому&nbsp;что&nbsp;снаружи&nbsp;выполняется&nbsp;array_flatten</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="210" href="#210">210</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Он&nbsp;раскрывает&nbsp;пустые&nbsp;массивы</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="211" href="#211">211</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[];</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="212" href="#212">212</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="213" href="#213">213</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Оставляем&nbsp;только&nbsp;директории</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="214" href="#214">214</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$emptyDirPaths&nbsp;=&nbsp;array_filter($children,&nbsp;fn($child)&nbsp;=&gt;&nbsp;isDirectory($child));</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="215" href="#215">215</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Не&nbsp;забываем&nbsp;увеличивать&nbsp;глубину</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="216" href="#216">216</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$output&nbsp;=&nbsp;array_map(function&nbsp;($child)&nbsp;use&nbsp;($depth)&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="217" href="#217">217</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;iter($child,&nbsp;$depth&nbsp;+&nbsp;1);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="218" href="#218">218</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;$emptyDirPaths);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="219" href="#219">219</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="220" href="#220">220</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Перед&nbsp;возвратом&nbsp;&quot;выпрямляем&quot;&nbsp;массив</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="221" href="#221">221</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array_flatten($output);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="222" href="#222">222</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="223" href="#223">223</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="224" href="#224">224</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;function&nbsp;findEmptyPaths($tree)</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="225" href="#225">225</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="226" href="#226">226</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Начинаем&nbsp;с&nbsp;глубины&nbsp;0</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="227" href="#227">227</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;iter($tree,&nbsp;0);</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="228" href="#228">228</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="229" href="#229">229</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="230" href="#230">230</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;findEmptyPaths($tree);&nbsp;//&nbsp;['apache',&nbsp;'logs']</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="231" href="#231">231</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Можно&nbsp;пойти&nbsp;еще&nbsp;дальше&nbsp;и&nbsp;позволить&nbsp;указывать&nbsp;максимальную&nbsp;глубину&nbsp;снаружи:</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="232" href="#232">232</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="233" href="#233">233</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&lt;?php</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="234" href="#234">234</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="235" href="#235">235</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;function&nbsp;findEmptyDirPaths($tree,&nbsp;$depth&nbsp;=&nbsp;2)</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="236" href="#236">236</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="237" href="#237">237</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;//&nbsp;...</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="238" href="#238">238</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;}</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="239" href="#239">239</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;Но&nbsp;возникает&nbsp;вопрос,&nbsp;а&nbsp;как&nbsp;сделать&nbsp;так,&nbsp;чтобы&nbsp;по&nbsp;умолчанию&nbsp;просматривалось&nbsp;все&nbsp;дерево?&nbsp;Например,&nbsp;можно&nbsp;взять&nbsp;заведомо&nbsp;большое&nbsp;число&nbsp;и&nbsp;сделать&nbsp;его&nbsp;значением&nbsp;по&nbsp;умолчанию.&nbsp;Такой&nbsp;подход&nbsp;сработает,&nbsp;но&nbsp;это&nbsp;хак.&nbsp;Правильный&nbsp;способ&nbsp;сделать&nbsp;это&nbsp;–&nbsp;использовать&nbsp;в&nbsp;качестве&nbsp;значения&nbsp;по&nbsp;умолчанию&nbsp;бесконечность&nbsp;INF.</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="240" href="#240">240</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="241" href="#241">241</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&lt;?php</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="242" href="#242">242</a></td><td class="col-11 codeLine"></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="243" href="#243">243</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;function&nbsp;findEmptyDirPaths($tree,&nbsp;$depth&nbsp;=&nbsp;INF)</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="244" href="#244">244</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;{</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="245" href="#245">245</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;&nbsp;&nbsp;//&nbsp;...</span></td></tr>
+    <tr class=" d-flex"><td  class="col-1 text-end"><a id="246" href="#246">246</a></td><td class="col-11 codeLine"><span class="comment">//&nbsp;}</span></td></tr>
+
+</tbody>
+</table>
+
+
+   <footer>
+    <hr/>
+    <h4>Legend</h4>
+    <p><span class="legend covered-by-small-tests">Covered by small (and larger) tests</span><span class="legend covered-by-medium-tests">Covered by medium (and large) tests</span><span class="legend covered-by-large-tests">Covered by large tests (and tests of unknown size)</span><span class="legend not-covered">Not covered</span><span class="legend not-coverable">Not coverable</span></p>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 11.0.8</a> using <a href="https://www.php.net/" target="_top">PHP 8.3.6</a> and <a href="https://phpunit.de/">PHPUnit 11.5.6</a> at Mon Sep 22 23:35:50 UTC 2025.</small>
+    </p>
+    <a title="Back to the top" id="toplink" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"/></svg>
+    </a>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=11.0.8" type="text/javascript"></script>
+  <script src="_js/bootstrap.bundle.min.js?v=11.0.8" type="text/javascript"></script>
+  <script src="_js/file.js?v=11.0.8" type="text/javascript"></script>
+ </body>
+</html>
