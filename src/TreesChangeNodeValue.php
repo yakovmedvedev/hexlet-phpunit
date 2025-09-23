@@ -3,43 +3,87 @@
 namespace Trees\Change\Node\Value;
 
 $tree = [
-    'name' => 'div',
+    'name' => 'html',
     'type' => 'tag-internal',
-    'className' => 'hexlet-community',
     'children' => [
         [
-            'name' => 'div',
+            'name' => 'body',
             'type' => 'tag-internal',
-            'className' => 'old-class',
-            'children' => [],
-        ],
-        [
-            'name' => 'div',
-            'type' => 'tag-internal',
-            'className' => 'old-class',
-            'children' => [],
+            'children' => [
+                [
+                    'name' => 'h1',
+                    'type' => 'tag-internal',
+                    'children' => [
+                        [
+                            'name' => '',
+                            'type' => 'text',
+                            'content' => 'Сообщество',
+                        ],
+                    ],
+                ],
+                [
+                    'name' => 'p',
+                    'type' => 'tag-internal',
+                    'children' => [
+                        [
+                            'type' => 'text',
+                            'content' => 'Общение между пользователями Хекслета',
+                        ],
+                    ],
+                ],
+                [
+                    'name' => 'hr',
+                    'type' => 'tag-leaf',
+                ],
+                [
+                    'name' => 'input',
+                    'type' => 'tag-leaf',
+                ],
+                [
+                    'name' => 'div',
+                    'type' => 'tag-internal',
+                    'className' => 'hexlet-community',
+                    'children' => [
+                        [
+                            'name' => 'div',
+                            'type' => 'tag-internal',
+                            'className' => 'text-xs-center',
+                            'children' => [],
+                        ],
+                        [
+                            'name' => 'div',
+                            'type' => 'tag-internal',
+                            'className' => 'fa fa-spinner',
+                            'children' => [],
+                        ],
+                    ],
+                ],
+            ],
         ],
     ],
 ];
-//print_r($tree);
 
-function changeClass($tree, $oldClass, $newClass)
+
+//function changeClass(array $tree, string $old, string $new): array
+//{
+//    if (isset($tree['className']) && $old == $tree['className']) {
+//        $tree['className'] = $new;
+//    }
+//    if (isset($tree['children'])) {
+//        $tree['children'] = array_map(fn ($item) => changeClass($item, $old, $new), $tree['children']);
+//    }
+//    return $tree;
+//}
+
+function changeClass(array $tree, string $oldClass, string $newClass): array
 {
-    // Make a copy of the node
-//    $result = $tree;
+    array_key_exists('className', $tree) && $tree['className'] === $oldClass ? $tree['className'] = $newClass : $tree;
 
-    // If className matches, update it
-    if (isset($tree['className']) && $tree['className'] === $oldClass) {
-        $tree['className'] = $newClass;
-    }
-
-    // Recursively process children, if any
     if (isset($tree['children']) && is_array($tree['children'])) {
         $tree['children'] = array_map(function($child) use ($oldClass, $newClass) {
             return changeClass($child, $oldClass, $newClass);
         }, $tree['children']);
     }
-
     return $tree;
 }
 
@@ -71,3 +115,18 @@ print_r($result);
 //         ],
 //     ],
 // ]
+
+//tutor's
+// function changeClass($node, $classNameFrom, $classNameTo) {
+//   if (array_key_exists('className', $node)) {
+//     $className = $node['className'];
+//     $newClassName = $classNameFrom === $className ? $classNameTo : $className;
+//     $node['className'] = $newClassName;
+//   }
+//   if ($node['type'] === 'tag-internal') {
+//     $newChildren = array_map(fn($item) => changeClass($item, $classNameFrom, $classNameTo), $node['children']);
+//     $node['children'] = $newChildren;
+//   }
+
+//   return $node;
+// };
