@@ -2,7 +2,7 @@
 
 namespace Classes\Get\Mid\Point;
 
-Class Point
+class Point
 {
     public $x;
     public $y;
@@ -15,11 +15,11 @@ $point2 = new Point();
 $point2->x = 6;
 $point2->y = 2;
 
-function getMidPoint(Point $point1, $point2)
+function getMidPoint($point1, $point2)
 {
-    $mid = new Point();
-    $mid->x = ($point1->x + $point2->x) / 2;
-    $mid->y = ($point1->y + $point2->y) / 2;
+    // $mid = new Point();
+    $x = ($point1->x + $point2->x) / 2;
+    $y = ($point1->y + $point2->y) / 2;
     return $mid;
 }
 
