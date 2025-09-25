@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Php\\Package\\": "src"
+      "App\\": "src/"
     },
     "files": [
     "src/Utils.php",
@@ -27,7 +27,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Php\\Package\\Tests\\": "tests"
+      "Hexlet\\Phpunit\\Tests\\": "tests"
     }
   },
   "require": {

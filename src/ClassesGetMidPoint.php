@@ -1,12 +1,22 @@
 <?php
 
-namespace Classes\Get\Mid\Point;
+namespace App\Classes\Get\Mid\Point; 
 
-class Point
-{
-    public $x;
-    public $y;
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
 }
+
+use App\Point;
+
+// class Point
+// {
+//     public $x;
+//     public $y;
+// }
 
 $point1 = new Point();
 $point1->x = 2;
@@ -20,12 +30,27 @@ function getMidPoint($point1, $point2)
     // $mid = new Point();
     $x = ($point1->x + $point2->x) / 2;
     $y = ($point1->y + $point2->y) / 2;
-    return $mid;
+    $point = new Point();
+    $point->x = $x;
+    $point->y = $y;
+    return $point;
 }
 
 $midpoint = getMidPoint($point1, $point2);
 $midpoint->x;
 $midpoint->y;
+print_r($midpoint->x . "\n");
+print_r($midpoint->y . "\n");
+
+//файл класса лежит в src
+//файл называется также как класс
+//в composer.json в autoload прописывается "autoload": {
+//    "psr-4": {
+//      "App\\": "src/"
+//    },
+//в файле класса namespace App;  
+//в файле функции use App\Class;
+//в PHPUnit-тесте namespace App;
 
 
 //Реализуйте класс Point с публичными свойствами $x и $y.
@@ -53,8 +78,5 @@ $midpoint->y;
 //    $x = ($point1->x + $point2->x) / 2;
 //    $y = ($point1->y + $point2->y) / 2;
 //
-//    $point = new Point();
-//    $point->x = $x;
-//    $point->y = $y;
-//    return $point;
+//    
 //}

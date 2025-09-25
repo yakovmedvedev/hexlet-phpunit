@@ -15,8 +15,9 @@ if (file_exists($autoloadPath1)) {
 use PHPUnit\Framework\TestCase;
 use Hexlet\Phpunit\Functional;
 use PHPUnit\Framework\Attributes\DataProvider;
+use App\Point;
 
-use function Classes\Get\Mid\Point\getMidpoint;
+use function App\Classes\Get\Mid\Point\getMidpoint;
 
 class ClassesGetMidPointTest extends TestCase
 {
