@@ -10,15 +10,15 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use App\Point;
+use App\Point1;
 
-$point = new Point();
+$point = new Point1();
 $point->x = 2;
 $point->y = 6;
 
 function dup($point)
 {
-    $point2 = new Point;
+    $point2 = new Point1;
     $point2->x = &$point->x;
     $point2->y = &$point->y;
     return $point2;

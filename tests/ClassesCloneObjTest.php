@@ -15,7 +15,7 @@ if (file_exists($autoloadPath1)) {
 use PHPUnit\Framework\TestCase;
 use Hexlet\Phpunit\Functional;
 use PHPUnit\Framework\Attributes\DataProvider;
-use App\Point;
+use App\Point1;
 
 use function App\Classes\Clone\Obj\dup;
 
@@ -23,7 +23,7 @@ class ClassesCloneObjTest extends TestCase
 {
     public function testDup()
     {
-        $point1 = new Point();
+        $point1 = new Point1();
         $point1->x = 3;
         $point1->y = 5;
         $point2 = dup($point1);

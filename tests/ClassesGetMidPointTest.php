@@ -15,7 +15,7 @@ if (file_exists($autoloadPath1)) {
 use PHPUnit\Framework\TestCase;
 use Hexlet\Phpunit\Functional;
 use PHPUnit\Framework\Attributes\DataProvider;
-use App\Point;
+use App\Point1;
 
 use function App\Classes\Get\Mid\Point\getMidpoint;
 
@@ -23,10 +23,10 @@ class ClassesGetMidPointTest extends TestCase
 {
     public function testGetMidpoint1()
     {
-        $point1 = new Point();
+        $point1 = new Point1();
         $point1->x = 1;
         $point1->y = 10;
-        $point2 = new Point();
+        $point2 = new Point1();
         $point2->x = 10;
         $point2->y = 1;
 
@@ -36,10 +36,10 @@ class ClassesGetMidPointTest extends TestCase
     }
     public function testGetMidpoint2()
     {
-        $point1 = new Point();
+        $point1 = new Point1();
         $point1->x = 0;
         $point1->y = 0;
-        $point2 = new Point();
+        $point2 = new Point1();
         $point2->x = 4;
         $point2->y = -2;
 

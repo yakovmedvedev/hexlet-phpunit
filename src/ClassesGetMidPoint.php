@@ -10,7 +10,7 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use App\Point;
+use App\Point1;
 
 // class Point
 // {
@@ -18,10 +18,10 @@ use App\Point;
 //     public $y;
 // }
 
-$point1 = new Point();
+$point1 = new Point1();
 $point1->x = 2;
 $point1->y = 6;
-$point2 = new Point();
+$point2 = new Point1();
 $point2->x = 6;
 $point2->y = 2;
 
@@ -30,7 +30,7 @@ function getMidPoint($point1, $point2)
     // $mid = new Point();
     $x = ($point1->x + $point2->x) / 2;
     $y = ($point1->y + $point2->y) / 2;
-    $point = new Point();
+    $point = new Point1();
     $point->x = $x;
     $point->y = $y;
     return $point;
