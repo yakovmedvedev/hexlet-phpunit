@@ -1,16 +1,23 @@
 <?php
 
+namespace App; 
+
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
 class Rational
 {
     public $numer;
     public $denom;
-    private $temp;
     public function __construct($numer, $denom)
     {
         $this->numer = $numer;
         $this->denom = $denom;
-//        $this->numer2 = $numer2;
-//        $this->denom2 = $denom2;
     }
     public function getNumer()
     {
@@ -20,38 +27,23 @@ class Rational
     {
         return $this->denom;
     }
-    public function gcd()
+    public function add($rational)
     {
-        while ($this->getDenom() != 0) {
-        $this->temp = $this->getDenom();
-        $this->denom = $this->getNumer() % $this->getDenom();
-        $this->numer = $this->temp;
+        $newNumer = $this->getNumer() * $rational->getDenom() + $rational->getNumer() * $this->getDenom();
+        $newDenom = $this->getDenom() * $rational->getDenom();
+        return new Rational($newNumer, $newDenom);
     }
-        return $this->numer = abs($this->numer);
-    }
-    function lcm(int $x, int $y): int
+    public function sub($rational)
     {
-        return ($x * $y) / gcd($x, $y);
+        $newNumer = $this->getNumer() * $rational->getDenom() - $rational->getNumer() * $this->getDenom();
+        $newDenom = $this->getDenom() * $rational->getDenom();
+        return new Rational($newNumer, $newDenom);
     }
-//    public function add($other) {
-//        $newNumer = $this->getNumer() * $other->getDenom() + $other->getNumer() * $this->getDenom();
-//        $newDenom = $this->getDenom() * $other->getDenom();
-//        return new Rational($newNumer, $newDenom);
-//    }
-     function add($other)
- {
-     $commonDenom = lcm($this->getDenom(), $other->getDenom());
-     $numer1 = $this->getNumer() * ($commonDenom / $this->getDenom());
-     $numer2 = $other->getNumer() * ($commonDenom / $other->getDenom());
-     $resultNum = $numer1 + $numer2;
-     return makeRational($resultNum, $commonDenom);
- }
-
 }
-$rat1 = new Rational(3, 6);
+$rat1 = new Rational(3, 9);
 print_r($rat1);
 print_r("\n");
-$rat2 = new Rational(2, 9);
+$rat2 = new Rational(10, 3);
 print_r($rat2);
 print_r("\n");
 ////print_r($rat1->gcd() . "\n");
@@ -61,6 +53,8 @@ print_r("\n");
 print_r(3 % 6);
 //
 print_r($rat3 = $rat1->add($rat2)); // Абстракция для рационального числа 99/27
+print_r("\n");
+print_r($rat4 = $rat1->sub($rat2));
 //function gcd(int $x, int $y): int
 //{
 //    while ($y != 0) {
