@@ -18,7 +18,9 @@
   },
   "autoload": {
     "psr-4": {
-      "App\\": "src/"
+      "App\\": "src/",
+      "App\\Classes\\": "src/classes",
+      "App\\Classes\\User\\": "src/classes/user/"
     },
     "files": [
     "src/Utils.php",
