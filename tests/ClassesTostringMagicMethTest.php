@@ -18,7 +18,7 @@ use App\Classes\Segment;
 
 class ClassesTostringMagicMethTest extends TestCase
 {
-    public function testReverse()
+    public function testArrayToString()
     {
         $point1 = new Point(1, 10);
         $point2 = new Point(11, -3);
@@ -27,5 +27,13 @@ class ClassesTostringMagicMethTest extends TestCase
 
         $segment2 = new Segment($point2, $point1);
         $this->assertEquals('[(11, -3), (1, 10)]', "{$segment2}");
+    }
+    public function testGetXFromPoint()
+    {
+        $this->assertEquals(1, (new Point(1, 2))->getX());
+    }
+    public function testGetYFromPoint()
+    {
+        $this->assertEquals(2, (new Point(1, 2))->getY());
     }
 }
