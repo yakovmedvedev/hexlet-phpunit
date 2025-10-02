@@ -6,6 +6,7 @@ class Point
 {
     public $x;
     public $y;
+    public static $table = 'points';
 
     public function __construct($x, $y)
     {
