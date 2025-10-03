@@ -4,28 +4,24 @@ namespace App\Classes;
 
 use App\Classes\ComparableInterface;
 
-class User1 implements ComparableInterface
-{
+class User implements ComparableInterface {
     private $id;
     private $name;
 
-    public function __construct($id, $name)
-    {
+    public function __construct(int $id, string $name) {
         $this->id = $id;
         $this->name = $name;
     }
-    public function getId()
-    {
+
+    public function compareTo($user2) {
+        return $this->id === $user2->id;
+    }
+
+    public function getId(): int {
         return $this->id;
     }
-    public function getName()
-    {
+
+    public function getName(): string {
         return $this->name;
-    }
-    public function compareTo($user1, ComparableInterface $user2)
-    {
-        if ($user1->getId() == $user2->getId()) {
-            return true;
-        }
     }
 }
