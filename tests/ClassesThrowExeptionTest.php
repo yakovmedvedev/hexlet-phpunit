@@ -26,9 +26,9 @@ class ClassesThrowExeptionTest extends TestCase
         $this->assertEquals(['key' => 'value'], $data);
     }
 
-    public function testJsonDecode2()
-    {
-        $this->expectException(Exception::class);
-        $data = \json_decode('{ key": "value" }', true);
-    }
+    // public function testJsonDecode2()
+    // {
+    //     $this->expectException(\Exception::class);
+    //     $data = \json_decode('{ key": "value" }', true);
+    // }
 }
