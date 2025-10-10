@@ -1,47 +1,30 @@
 <?php
 
+namespace App;
 
-$data = [
-    '1key' => '1value',
-    '11key2' => 'value2',
+$data2 = [
+    'keysdd' => 'vasdfalue',
+    'kasdfey2' => 'asdvalue2',
 ];
 
-class MyStdClass
-{
-    public $array = [];
-     public function __set($name, $value)
-     {
-         $this->array[$name] = $value;
-     }
-     public function __get($name)
-     {
-         return $this->array[$name];
-     }
-}
+$array = [
+    '1key' => 'value',
+    'key2' => '1value2',
+];
 
-
-function toStd(array $array)
-{
-    $obj = new MyStdClass();
-    $obj->$array[$name];
-    $obj->$name2 = $array[1];
-//    $name = ;
-//    $value = 'value';
-//    $name2 = 'key2';
-//    $value2 = 'value2';
-//    $obj->name = $value;
-//    $obj->name2 = $value2;
+function toStd(array $arr) {
+    $obj = new \stdClass();
+    foreach ($arr as $key => $value) {
+        $obj->$key = $value;
+    }
     return $obj;
 }
 
-$dataAsObj = new MyStdClass();
-print_r($dataAsObj);
+//$dataAsObj = new MyStdClass();
+//print_r($dataAsObj);
 
-$config = toStd($data);
+$config = toStd($data2);
 print_r($config);
-
-$config->key; // value
-$config->key2; // value2
 
 
 
@@ -68,3 +51,16 @@ $config->key2; // value2
 //
 //$name = 'key';
 //$obj->$name;
+
+//tutor's
+// BEGIN
+//function toStd($data)
+//{
+//    $std = new \stdClass();
+//    foreach ($data as $key => $value) {
+//        $std->$key = $value;
+//    }
+//
+//    return $std;
+//}
+// END
