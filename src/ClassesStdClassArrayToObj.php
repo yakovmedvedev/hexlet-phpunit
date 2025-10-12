@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Classess\Std\Class\Array\To\Obj;
 
 $data2 = [
     'keysdd' => 'vasdfalue',
