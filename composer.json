@@ -36,7 +36,8 @@
     "symfony/string": "^7.2",
     "illuminate/collections": "^11.41",
     "nesbot/carbon": "^3.8",
-    "hexlet/trees":"dev-main"
+    "hexlet/trees":"dev-main",
+    "php-ds/php-ds": "^1.7"
   },
       "repositories":[
         {
