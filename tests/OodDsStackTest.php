@@ -21,9 +21,14 @@ use function App\Ood\Ds\Stack\checkIfBalanced;
 
 class OodDsStackTest extends TestCase
 {   
-    public function TestBalanced()
+    public function testBalanced()
     {
         $expression = '{}()<>[]';
-        $this->assertTrue(checkIfBalance($expression));
+        $this->assertTrue(checkIfBalanced($expression));
     }
+    // public function testNotBalanced()
+    // {
+    //     $expression = '{}()<>]]';
+    //     $this->assertGreaterThan(0, checkIfBalanced($expression));
+    // }
 }

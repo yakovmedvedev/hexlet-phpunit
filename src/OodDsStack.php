@@ -4,10 +4,10 @@ namespace App\Ood\Ds\Stack;
 
 use Ds\Stack;
 
-function checkIfBalanced(string $expression): boolean
+function checkIfBalanced(string $expression): bool
 {
     // инициализируем стек
-    $stack = new Ds\Stack();
+    $stack = new \Ds\Stack();
     // инициализируем список открывающих элементов
     $startSymbols = ['{', '(', '<', '['];
     // инициализируем список пар
@@ -32,5 +32,5 @@ function checkIfBalanced(string $expression): boolean
     }
 
     // Если стек оказался пустым после обхода строки, то значит все хорошо
-    return sizeof($stack) == 0;
+    return sizeof($stack) == 0 ?? true;
 }
