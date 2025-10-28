@@ -4,9 +4,6 @@ namespace App\Ood\Ds;
 
 use Ds\Stack;
 
-<?php
-
-
 class Stack {
     protected $stack;
     protected $size;
@@ -38,30 +35,40 @@ class Stack {
     }
 }
 
-$str1 = 'ab#cwwww';
+
+
+$str1 = 'ab#c';
 $str2 = 'abc';
 
-function compare($str1, $str2)
-{
-    // инициализируем стек
-    $stack = new Stack();
+function processString($string)
 
-//    for ($i = (strlen($str1) - 1); $i >= 0; $i--) {
-    for ($i = 0; $i < strlen($str1); $i++) {
-        $current = $str1[$i];
-        var_dump($current);
-        if ($current === "#") {
-            (!$stack->isEmpty()) ?? $stack->pop();
+{
+    $stack = new Stack;
+
+    for ($i=0; $i<strlen($string); $i++) {
+        $char = $string[$i];
+        if ($char === "#") {
+            if (!empty($stack)) {
+                $stack->pop();
+            }
         } else {
-            $stack->push($current);
+            $stack->push($char);
         }
-            $stack->push($current);
-//        return $stack;
 
     }
-    print_r($stack);
-//    return $stack;
+//    print_r($stack);
+    return $stack;
 }
+
+
+function compare($str1, $str2): bool
+
+{
+    return (processString($str1) == processString($str2));
+
+}
+print_r(compare($str1, $str2));
+
 compare($str1, $str2);
 //$stack = new Stack();
 //print_r($stack);
@@ -71,3 +78,4 @@ compare($str1, $str2);
 //print_r($stack);
 //$stack->pop();
 //print_r($stack);
+
