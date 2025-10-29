@@ -4,36 +4,36 @@ namespace App\Ood\Ds;
 
 use Ds\Stack;
 
-class Stack {
-    protected $stack;
-    protected $size;
-    public function __construct($size = 50) {
-// Инициализировать стек
-        $this->stack = array();
-// Инициализировать размер стека
-        $this->size = $size;
-    }
-    /** * Вставляет элемент в стек * @param type $data */
-    public function push($data) {
-// Проверяет переполнение стека
-        if (count($this->stack) < $this->size) {
-// Вставляет элемент в начало
-            array_unshift($this->stack, $data);
-        } else {
-// Если стек полон, возвращает исключение `Stack Overflow`
-            throw new RuntimeException("Stack overflow");
-        }
-    }
-    /** * Извлекает элемент из стека * */
-    public function pop() {
-// Если стек пуст
-        if (empty($this->stack)) {
-            throw new RuntimeException("Stack underflow");
-        } else {
-            return array_shift($this->stack);
-        }
-    }
-}
+// class Stack {
+//     protected $stack;
+//     protected $size;
+//     public function __construct($size = 50) {
+// // Инициализировать стек
+//         $this->stack = array();
+// // Инициализировать размер стека
+//         $this->size = $size;
+//     }
+//     /** * Вставляет элемент в стек * @param type $data */
+//     public function push($data) {
+// // Проверяет переполнение стека
+//         if (count($this->stack) < $this->size) {
+// // Вставляет элемент в начало
+//             array_unshift($this->stack, $data);
+//         } else {
+// // Если стек полон, возвращает исключение `Stack Overflow`
+//             throw new RuntimeException("Stack overflow");
+//         }
+//     }
+//     /** * Извлекает элемент из стека * */
+//     public function pop() {
+// // Если стек пуст
+//         if (empty($this->stack)) {
+//             throw new RuntimeException("Stack underflow");
+//         } else {
+//             return array_shift($this->stack);
+//         }
+//     }
+// }
 
 
 
@@ -41,22 +41,19 @@ $str1 = 'ab#c';
 $str2 = 'abc';
 
 function processString($string)
-
 {
-    $stack = new Stack;
+    $stack = new \Ds\Stack;
 
-    for ($i=0; $i<strlen($string); $i++) {
-        $char = $string[$i];
+    foreach (str_split($string) as $char)
+    {
         if ($char === "#") {
-            if (!empty($stack)) {
+            if (!$stack->isEmpty()) {
                 $stack->pop();
             }
         } else {
             $stack->push($char);
         }
-
     }
-//    print_r($stack);
     return $stack;
 }
 
