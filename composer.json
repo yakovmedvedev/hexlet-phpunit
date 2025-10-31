@@ -37,8 +37,7 @@
     "illuminate/collections": "^11.41",
     "nesbot/carbon": "^3.8",
     "hexlet/trees":"dev-main",
-    "php-ds/php-ds": "^1.5",
-    "tightenco/collect": "^5.6"
+    "php-ds/php-ds": "^1.5"
   },
       "repositories":[
         {
