@@ -2,8 +2,6 @@
 
 namespace Hexlet\Phpunit\Tests;
 
-require_once __DIR__ . "/../src/OodCollect.php";
-
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 if (file_exists($autoloadPath1)) {
@@ -15,10 +13,7 @@ if (file_exists($autoloadPath1)) {
 use PHPUnit\Framework\TestCase;
 use Hexlet\Phpunit\Functional;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Illuminate\Collections;
-use App\DeckOfCards;
-
-use function App\Ood\Collect\getShuffled;
+use App\Classes\DeckOfCards;
 
 class OodCollectTest extends TestCase
 {   
