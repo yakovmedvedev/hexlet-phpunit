@@ -1,18 +1,8 @@
 <?php
 
-namespace Hexlet\Phpunit\Tests;
-
-$autoloadPath1 = __DIR__ . '/../../../autoload.php';
-$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
-if (file_exists($autoloadPath1)) {
-    require_once $autoloadPath1;
-} else {
-    require_once $autoloadPath2;
-}
+namespace App\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Hexlet\Phpunit\Functional;
-use PHPUnit\Framework\Attributes\DataProvider;
 use App\Classes\DeckOfCards;
 
 class OodCollectTest extends TestCase
