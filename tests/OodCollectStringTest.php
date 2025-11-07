@@ -2,11 +2,11 @@
 
 namespace App\Tests;
 
-require_once __DIR__ . "/../src/OodCollectString.php";
+require_once __DIR__ . "/../src/OodSymphonyString.php";
 
 use PHPUnit\Framework\TestCase;
 
-use function App\Ood\Collect\String\getQuestions;
+use function App\Ood\Symphony\String\getQuestions;
 
 class OodCollectStringTest extends TestCase
 {
